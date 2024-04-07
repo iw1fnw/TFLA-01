@@ -1,0 +1,50 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+  <file alias="stock_3d-color-picker_16.png">images/stock_3d-color-picker_16.png</file>
+  <file alias="stock_3d-color-picker_24.png">images/stock_3d-color-picker_24.png</file>
+  <file alias="stock_convert_16.png">images/stock_convert_16.png</file>
+  <file alias="stock_convert_24.png">images/stock_convert_24.png</file>
+  <file alias="stock_exit_16.png">images/stock_exit_16.png</file>
+  <file alias="stock_exit_24.png">images/stock_exit_24.png</file>
+  <file alias="stock_export_16.png">images/stock_export_16.png</file>
+  <file alias="stock_export_24.png">images/stock_export_24.png</file>
+  <file alias="stock_open_16.png">images/stock_open_16.png</file>
+  <file alias="stock_open_24.png">images/stock_open_24.png</file>
+  <file alias="stock_first_16.png">images/stock_first_16.png</file>
+  <file alias="stock_first_24.png">images/stock_first_24.png</file>
+  <file alias="stock_help_16.png">images/stock_help_16.png</file>
+  <file alias="stock_help_24.png">images/stock_help_24.png</file>
+  <file alias="stock_last_16.png">images/stock_last_16.png</file>
+  <file alias="stock_last_24.png">images/stock_last_24.png</file>
+  <file alias="stock_left_arrow_16.png">images/stock_left_arrow_16.png</file>
+  <file alias="stock_left_arrow_24.png">images/stock_left_arrow_24.png</file>
+  <file alias="stock_next-page_16.png">images/stock_next-page_16.png</file>
+  <file alias="stock_next-page_24.png">images/stock_next-page_24.png</file>
+  <file alias="stock_previous-page_16.png">images/stock_previous-page_16.png</file>
+  <file alias="stock_previous-page_24.png">images/stock_previous-page_24.png</file>
+  <file alias="stock_redo_16.png">images/stock_redo_16.png</file>
+  <file alias="stock_redo_24.png">images/stock_redo_24.png</file>
+  <file alias="stock_right_arrow_16.png">images/stock_right_arrow_16.png</file>
+  <file alias="stock_right_arrow_24.png">images/stock_right_arrow_24.png</file>
+  <file alias="stock_stop_16.png">images/stock_stop_16.png</file>
+  <file alias="stock_stop_24.png">images/stock_stop_24.png</file>
+  <file alias="stock_zoom-1_16.png">images/stock_zoom-1_16.png</file>
+  <file alias="stock_zoom-1_24.png">images/stock_zoom-1_24.png</file>
+  <file alias="stock_zoom_in_16.png">images/stock_zoom_in_16.png</file>
+  <file alias="stock_zoom_in_24.png">images/stock_zoom_in_24.png</file>
+  <file alias="stock_zoom-optimal_16.png">images/stock_zoom-optimal_16.png</file>
+  <file alias="stock_zoom-optimal_24.png">images/stock_zoom-optimal_24.png</file>
+  <file alias="stock_zoom-out_16.png">images/stock_zoom-out_16.png</file>
+  <file alias="stock_zoom-out_24.png">images/stock_zoom-out_24.png</file>
+  <file alias="stock_zoom-page-width_16.png">images/stock_zoom-page-width_16.png</file>
+  <file alias="stock_zoom-page-width_24.png">images/stock_zoom-page-width_24.png</file>
+  <file alias="stock_about_16.png">images/stock_about_16.png</file>
+  <file alias="stock_about_24.png">images/stock_about_24.png</file>
+  <file alias="stock_open_recent_16.png">images/stock_open_recent_16.png</file>
+  <file alias="stock_open_recent_24.png">images/stock_open_recent_24.png</file>
+  <file alias="tfla-01_32.png">images/tfla-01_32.png</file>
+  <file alias="whats_this.png">images/whats_this.png</file>
+  <file>COPYING</file>
+</qresource>
+</RCC>
+<!-- vim: set ft=xml: -->

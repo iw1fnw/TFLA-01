@@ -1,0 +1,260 @@
+2010-08-30  Bernhard Walle <bernhard@bwalle.de>
+
+	* Fix uninitialized variable.
+	* Remove unused code.
+	* Make using the protocol analyzers more comfortable and implement a
+	  generic interface so that new analyzers could be added without
+	  adding user interface code.
+	* Check for updates on startup.
+	* Remove unneeded preprocessor definitions.
+	* Don't rely on the QTDIR environment to find the translations.
+	* Fix possible crash in the SPI analyzer (crashed only in Windows but was also reported in
+	  valgrind on Linux).
+	* Only enable the protocol menu entry if the channel assignment is unique.
+	* Also load the Qt translations from the current working directory.
+
+2010-08-29  Bernhard Walle <bernhard@bwalle.de>
+
+	* Use an own CMakeLists.txt in src/hardware.
+
+2010-08-28  Bernhard Walle <bernhard@bwalle.de>
+
+	* Fix wrong suffix when saving SPI files.
+
+2010-08-27  Bernhard Walle <bernhard@bwalle.de>
+
+	* Add common code for the 'datadump' tool to a new common directory.
+	  There will be a new tool that does the data dumping without
+	  libieee1284 and for that tool we need that common routine(s).
+	* Add 'datadump_ppdev' program.
+	* Find the translation always in the directory of the binary,
+	  regardless of the working directory.
+	* Include the SPI analyzer from Kai Dorau (kai.dorau@gmx.net).
+
+2010-08-26  Bernhard Walle <bernhard@bwalle.de>
+
+	* Add 'datadump' tool.
+
+2010-08-25  Bernhard Walle <bernhard@bwalle.de>
+
+	* Add NEWS file.
+	* Improvements in the I2C analysing code by Jose Aparicio. Add the
+	  capability to analyse some chips like PCF8574/PCF8574A (I/O
+	  expander) and DS1307 (RTC).
+
+2010-08-24  Bernhard Walle <bernhard@bwalle.de>
+
+	* Fix problem that errors during data collection are suppressed on
+	  non-Windows platforms.
+
+2010-06-16  Bernhard Walle <bernhard@bwalle.de>
+
+	* Fix the entry time edit widget for the measuring time and clarify
+	  the units (mm:ss).
+
+2010-06-08  Bernhard Walle <bernhard@bwalle.de>
+
+	* Change channel numbers in the I2C menu to start with 1 instead of 0
+	  to match the main plot numbering.
+
+2010-05-15  Bernhard Walle <bernhard@bwalle.de>
+
+	* Port to Qt4 without Qt3-support.
+
+2010-05-14  Bernhard Walle <bernhard@bwalle.de>
+
+	* Fix two crashes when drawing the line.
+
+2010-05-13  Bernhard Walle <bernhard@bwalle.de>
+
+	* Add a file 'VERSION' that contains the package version. Read that
+	  file from the CMakeLists.txt.
+
+2010-05-08  Bernhard Walle <bernhard@bwalle.de>
+
+	* Make the link in the about dialog clickable.
+	* On Windows, give the user a hint to install 'giveio.sys' correctly
+	  if the data acquisition failed.
+
+2010-03-10  Bernhard Walle <bernhard@bwalle.de>
+
+	* Remove obsolete translations.
+	* Include the system error message in case of ParportError
+	  with E1284_SYS error code.
+
+2010-02-28  Bernhard Walle <bernhard@bwalle.de>
+
+	* Show a message in that status bar if the file has been saved.
+	* Update documentation for 0.3.0.
+
+2010-02-27  Bernhard Walle <bernhard@bwalle.de>
+
+	* Set default extension to PNG when saving plots.
+	* Set default extension to I2C when saving I2C data files.
+	* Set default extension to DAT when saving tfla-01 data files.
+	* Update stock icons with last Gtk version.
+	* Change some icon assignment in the main window.
+	* Add a magic number to the binary data format.
+
+2010-02-26  Bernhard Walle <bernhard@bwalle.de>
+
+	* Make it possible to compile a viewer-only version without
+	  libieee1284.
+	* Improve toolbar look on Mac OS.
+
+2010-02-21  Bernhard Walle <bernhard@bwalle.de>
+
+	* Use '--nonet' for xsltproc only on Unix.
+	* Fix copy-and-paste error in the documentation regarding JP-SER-2-DIS
+	  and JS-SER2-EN1/JS-SER2-EN2.
+	* Implement loading and saving of data for offline usage (contributed
+	  by Jose Aparicio).
+	* Add I2C analyzer logic (contributed by Jose Aparicio).
+
+2009-11-22  Bernhard Walle <bernhard@bwalle.de>
+
+	* Use freedesktop.org icons when compiled with Qt >= 4.6 on X11.
+	* Fix crash when no ports are available.
+
+2009-05-03  Bernhard Walle <bernhard@bwalle.de>
+
+	* Use aliases for compiled-in images to make the source more compact.
+	* Include libieee1284 directory for Windows build.
+	* Various coding-style fixes.
+	* Windows fixes.
+	* Find documentation and translation also in the build directory.
+	* Copy images when building the documentation.
+
+2009-04-26  Bernhard Walle <bernhard@bwalle.de>
+
+	* Port to Qt4
+	* Switch to CMake
+
+2008-07-13  Bernhard Walle <bernhard@bwalle.de>
+
+	* don't show when the measuring starts (so revert the change from
+	  2008-07-06) because then samples are lost because that takes too
+	  much time
+
+2008-07-12  Bernhard Walle <bernhard@bwalle.de>
+
+	* implement own polling function for Parport::waitData() because
+	  the libieee1284-provided polling uses a sleep() between polling,
+	  so the triggering is less accurate as it could be
+
+2008-07-06  Bernhard Walle <bernhard@bwalle.de>
+
+	* show when measuring starts after triggering
+	* change timeout of Parport::waitData() to 1 sec
+	* accept NULL as timeout in Parport::waitData()
+	* bump version to 0.1.4 (don't release)
+
+2008-07-02  Bernhard Walle <bernhard@bwalle.de>
+
+	* check if the parallel port is TRISTATE capable (after debugging two
+	  days why the schematics does not work ...)
+
+2008-01-06  Bernhard Walle <bernhard@bwalle.de>
+
+	* triggering is enabled when the mask is not 0x00 and not when it is not
+	  0xff as previously implemented
+	  [discovered by Helmut Jakob]
+
+2008-02-03  Bernhard Walle <bernhard@bwalle.de>
+
+	* fix wrong "Stop" label (accidentally named was "Start")
+	  [reported by Dr.-Ing. A. Irmer]
+
+2007-12-15  Bernhard Walle <bernhard@bwalle.de>
+
+	* fix build for gcc 4.3
+
+2007-09-21  Bernhard Walle <bernhard@bwalle.de>
+
+	* adapt documentation to udev and add the links to the openSUSE
+	  BuildService
+
+2007-09-18  Bernhard Walle <bernhard@bwalle.de>
+
+	* implemented saving only the changed positions (suggested by Philippe
+	  Langlois)
+
+2007-09-17  Bernhard Walle <bernhard@bwalle.de>
+
+	* implemented CSV export option (suggested by Philippe Langlois)
+
+2005-06-29  Bernhard Walle <bernhard@bwalle.de>
+
+	* Added Windows documentation (thanks to Stefan Holzer)
+	* Released 0.1.2.
+
+2005-06-18  Bernhard Walle <bernhard@bwalle.de>
+
+	* make ParportList a singleton object, so ieee1284_find_ports
+	  is only called once, this doesn't reset other parallel ports
+	  (that are currently unsued) at each measure which is
+	  useful if you have avrdude and keep it connected with the
+	  schematic
+
+2005-06-17  Bernhard Walle <bernhard@bwalle.de>
+
+	* Changed documentation to use Qt Assistant on all plattforms
+	* Removed browser settings
+	* Added assistant profile
+
+2005-06-15  Bernhard Walle <bernhard@bwalle.de>
+
+	* Bugfix: ZoomFit sets now the start index to 0
+
+2005-06-14  Bernhard Walle <bernhard@bwalle.de>
+
+	* Added schematic in Eagle format to both documentation paths
+	* Added schematic to the share/tfla-01/ path
+	* Critial bugfix: DataPlot::getNumberOfPossiblyDisplayedSamples()
+	  always returned 0
+	* Completed documentation
+	* Released 0.1.1.
+
+2005-06-13  Bernhard Walle <bernhard@bwalle.de>
+
+	* Many bugfixes
+	* Changed shortcuts for navigation and zooming
+	* Changed mouse wheel action in plot area (Shift: page, None: normal,
+	  Ctrl: Zoom)
+	* Implemented help, removed What's This
+	* Added help skeleton (XML Docbook) and added build system
+
+2005-06-12  Bernhard Walle <bernhard@bwalle.de>
+
+	* Changed directory structure so that translation works in the source
+	  directory structure
+	* Implemented "zoom to fit markers" action
+	* Implemented "save current plot" action
+
+2005-06-11  Bernhard Walle <bernhard@bwalle.de>
+
+	* Bugfix: Don't use QTimer in non-GUI thread. Replaced by QTime()
+	  polling operation (polling is not bad here because the parport data
+	  collection is collecting 100 % CPU anyway
+	* Optimized drawing for lines that have always the same value
+	* Changed shortcuts for start/stop to F5/F6
+	* Added another jumper pair to the schematic
+	* Fixed various bugs with scrolling
+	* Improved line drawing for lines that don't have always the same
+	  value, too
+	* make sample rate (i. e. skip rate) configurable
+	* added status message that displays the number of collected samples
+
+2005-06-10  Bernhard Walle <bernhard@bwalle.de>
+
+	* Changed schematic:
+	  - Changed inputs and outputs for MAX232 (of course, use only RS232
+	    inputs and TTL outputs)
+	  - Changed POWER pin to be on the right side of the 7805
+	  - Connect MAX232 to power
+
+2005-06-10  Bernhard Walle <bernhard@bwalle.de>
+
+	* Initial release 0.1.0
+
+:indentSize=8:tabSize=8:noTabs=false:

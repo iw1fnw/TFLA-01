@@ -1,0 +1,19 @@
+0.5.0
+-----
+ * Fix build with old Qt versions.
+ * Change channel numbers in the I2C menu.
+ * Fix the entry time edit widget for the measuring time.
+ * Fix problem that errors during data collection are suppressed on non-Windows
+   platforms.
+ * Improvements in the I2C analysing code by Jose Aparicio. Add the
+   capability to analyse some chips like PCF8574/PCF8574A (I/O expander) and
+   DS1307 (RTC).
+ * Add a SPI analyzer like it's already there for I2C. Thanks to Kai Dorau for
+   the contribution.
+ * Make using the protocol analyzers more comfortable and implement a
+   generic interface so that new analyzers could be added without
+   adding user interface code.
+ * Check for updates on startup.
+ * Don't rely on the QTDIR environment to find the translations.
+ * Also load the Qt translations from the current working directory. This enables
+   translations on Windows.

@@ -1,0 +1,12 @@
+The Fabulous Logic Analyzer #1
+==============================
+
+This is a simple logic analyzer software. Read the documentation in HTML format
+in the doc/user subdirectory to get started with installation and running
+of the software.
+
+Since the documentation is in DocBook and gets compiled during installation,
+read http://tfla-01.berlios.de/manual/en/ if you have a source tarball and if
+you don't want to read XML sources.
+
+
