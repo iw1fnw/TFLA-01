@@ -15,28 +15,44 @@
 #
 
 project(tfla-01 C CXX)
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.5)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 
+# Set the CMAKE_PREFIX_PATH to point to the Qt5 installation directory
+# if it's not set by the user.
+#if(NOT CMAKE_PREFIX_PATH)
+#    set(CMAKE_PREFIX_PATH "/usr/lib/qt5/bin" CACHE PATH "Qt5 installation directory")
+#endif()
 
-include(FindQt4)
-set(QT_USE_QTMAIN     1) # only Windows
-set(QT_USE_QTNETWORK  1) # for the update check
-include(${QT_USE_FILE})
+# Qt5
+find_package(Qt5 COMPONENTS Widgets Network LinguistTools REQUIRED)
+if (Qt5Widgets_FOUND AND Qt5Network_FOUND AND Qt5LinguistTools_FOUND)
+  # The Qt5Widgets_INCLUDES also includes the include directories for
+    # dependencies QtCore and QtGui
+  include_directories(${Qt5Widgets_INCLUDE_DIRS} ${Qt5Network_INCLUDE_DIRS} ${Qt5LinguistTools_INCLUDE_DIRS})
+  # We need add -DQT_WIDGETS_LIB when using QtWidgets in Qt 5.
+  add_definitions(${Qt5Widgets_DEFINITIONS} ${QtNetwork_DEFINITIONS} ${Qt5LinguistTools_DEFINITIONS})
+  # Executables fail to build with Qt 5 in the default configuration
+  # without -fPIE. We add that here.
+  set(CMAKE_CXX_FLAGS "${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
+else ()
+    message( FATAL_ERROR "QT5 not found.")
+endif ()
 
 # ieee1284
-include(Findieee1284)
-include_directories(${IEEE1284_INCLUDE_DIR})
-
+find_package(ieee1284)
 if (IEEE1284_FOUND)
+    include_directories(${IEEE1284_INCLUDE_DIR})
     set(HAVE_LIBIEEE1284 1)
-else (IEEE1284_FOUND)
+else ()
     set(HAVE_LIBIEEE1284 0)
-endif (IEEE1284_FOUND)
-
-if (NOT IEEE1284_FOUND)
     message("libieee1284 not found. Compiling only a viewer for saved files.")
-endif (NOT IEEE1284_FOUND)
+endif ()
 
 configure_file(
     "${PROJECT_SOURCE_DIR}/tfla01config.h.in"

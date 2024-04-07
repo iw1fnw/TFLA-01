@@ -527,63 +527,63 @@ void Tfla01::connectSignalsAndSlots()
     throw ()
 {
 
-    connect(m_actions.openAction,                  SIGNAL(activated()),
+    connect(m_actions.openAction,                  SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(open()));
-    connect(m_actions.openRecentAction,            SIGNAL(activated()),
+    connect(m_actions.openRecentAction,            SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(reopen()));
-    connect(m_actions.saveAction,                  SIGNAL(activated()),
+    connect(m_actions.saveAction,                  SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(save()));
-    connect(m_actions.saveViewAction,              SIGNAL(activated()),
+    connect(m_actions.saveViewAction,              SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(saveScreenshot()));
-    connect(m_actions.exportAction,                SIGNAL(activated()),
+    connect(m_actions.exportAction,                SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(exportToCSV()));
-    connect(m_actions.quitAction,                  SIGNAL(activated()),
+    connect(m_actions.quitAction,                  SIGNAL(triggered()),
             this,                                  SLOT(close()));
-    connect(m_actions.helpAction,                  SIGNAL(activated()),
+    connect(m_actions.helpAction,                  SIGNAL(triggered()),
             &m_help,                               SLOT(showHelp()));
-    connect(m_actions.aboutAction,                 SIGNAL(activated()) ,
+    connect(m_actions.aboutAction,                 SIGNAL(triggered()) ,
             &m_help,                               SLOT(showAbout()));
-    connect(m_actions.aboutQtAction,               SIGNAL(activated()),
+    connect(m_actions.aboutQtAction,               SIGNAL(triggered()),
             qApp,                                  SLOT(aboutQt()));
 
-    connect(m_actions.startAction,                 SIGNAL(activated()),
+    connect(m_actions.startAction,                 SIGNAL(triggered()),
             this,                                  SLOT(startAnalyze()));
-    connect(m_actions.stopAction,                  SIGNAL(activated()),
+    connect(m_actions.stopAction,                  SIGNAL(triggered()),
             this,                                  SLOT(stopAnalyze()));
-    connect(m_actions.zoom1Action,                 SIGNAL(activated()),
+    connect(m_actions.zoom1Action,                 SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(zoom1()) );
-    connect(m_actions.zoomInAction,                SIGNAL(activated()),
+    connect(m_actions.zoomInAction,                SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(zoomIn()) );
-    connect(m_actions.zoomOutAction,               SIGNAL(activated()),
+    connect(m_actions.zoomOutAction,               SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(zoomOut()) );
-    connect(m_actions.zoomFitAction,               SIGNAL(activated()),
+    connect(m_actions.zoomFitAction,               SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(zoomFit()) );
-    connect(m_actions.zoomMarkersAction,           SIGNAL(activated()),
+    connect(m_actions.zoomMarkersAction,           SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(zoomMarkers()));
-    connect(m_actions.changeForegroundColorAction, SIGNAL(activated()),
+    connect(m_actions.changeForegroundColorAction, SIGNAL(triggered()),
             this,                                  SLOT(changeForegroundColor()));
-    connect(m_actions.changeLeftColorAction,       SIGNAL(activated()),
+    connect(m_actions.changeLeftColorAction,       SIGNAL(triggered()),
             this,                                  SLOT(changeLeftColor()));
-    connect(m_actions.changeRightColorAction,      SIGNAL(activated()),
+    connect(m_actions.changeRightColorAction,      SIGNAL(triggered()),
             this,                                  SLOT(changeRightColor()));
-    connect(m_actions.navigatePos1Action,          SIGNAL(activated()),
+    connect(m_actions.navigatePos1Action,          SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(pos1()));
-    connect(m_actions.navigateEndAction,           SIGNAL(activated()),
+    connect(m_actions.navigateEndAction,           SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(end()));
-    connect(m_actions.navigateLeftAction,          SIGNAL(activated()),
+    connect(m_actions.navigateLeftAction,          SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(navigateLeft()));
-    connect(m_actions.navigateRightAction,         SIGNAL(activated()),
+    connect(m_actions.navigateRightAction,         SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(navigateRight()));
-    connect(m_actions.navigatePageLeftAction,      SIGNAL(activated()),
+    connect(m_actions.navigatePageLeftAction,      SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(navigateLeftPage()));
-    connect(m_actions.navigatePageRightAction,     SIGNAL(activated()),
+    connect(m_actions.navigatePageRightAction,     SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(navigateRightPage()));
-    connect(m_actions.jumpLeftAction,              SIGNAL(activated()),
+    connect(m_actions.jumpLeftAction,              SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(jumpToLeftMarker()));
-    connect(m_actions.jumpRightAction,             SIGNAL(activated()),
+    connect(m_actions.jumpRightAction,             SIGNAL(triggered()),
             m_centralWidget->getDataView(),        SLOT(jumpToRightMarker()));
 
-    connect(m_actions.channelAssignmentAction,     SIGNAL(activated()),
+    connect(m_actions.channelAssignmentAction,     SIGNAL(triggered()),
             this,                                  SLOT(changeChannelAssignment()));
     connect(m_actions.analyzeActions,              SIGNAL(triggered(QAction *)),
             this,                                  SLOT(analyzeTriggered(QAction *)));

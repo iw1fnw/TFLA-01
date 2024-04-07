@@ -1,6 +1,11 @@
 TODO
 ====
 
+ * Clean-up documentation to reflect new version
+ * Testing all functionalities for bugs due to porting
+
+--- outstanding from version 0.5.0 --- 
+ 
  * Support for "I2C bus monitor board"
    http://www.i2cchip.com/pdfs/busmon_sch.pdf
 
@@ -10,4 +15,3 @@ TODO
    unused is pin 10
    
    The data pins D7,6,5 must be set high to power the isolator circuit.
-

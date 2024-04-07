@@ -1,3 +1,7 @@
+2024-04-07 Alberto Busso <alberto@busso.net>
+
+	* Port to Qt5 without Qt4-support. Built on Linux only.
+
 2010-08-30  Bernhard Walle <bernhard@bwalle.de>
 
 	* Fix uninitialized variable.

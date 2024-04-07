@@ -207,7 +207,7 @@ void DataView::updateScrollInfo()
         m_scrollBar->setPageStep(0);
     else
         m_scrollBar->setPageStep(ps / m_scrollDivisor);
-        m_scrollBar->setSingleStep(qRound(ps / 10.0 / m_scrollDivisor));
+    m_scrollBar->setSingleStep(qRound(ps / 10.0 / m_scrollDivisor));
 
 #if 0
         PRINT_TRACE("div = %d", m_scrollDivisor);
@@ -284,14 +284,14 @@ void DataView::navigate(int direction) throw ()
 
         case QAbstractSlider::SliderPageStepAdd:
             si = qMin( m_dataPlot->getStartIndex() +
-                    qRound(m_dataPlot->getNumberOfPossiblyDisplayedSamples()),
+                    qRound((float)m_dataPlot->getNumberOfPossiblyDisplayedSamples()),
                     int(m_currentData.bytes().size()));
             m_dataPlot->setStartIndex(si);
             break;
 
         case QAbstractSlider::SliderPageStepSub:
             si = qMax(0,  m_dataPlot->getStartIndex() -
-                    qRound(m_dataPlot->getNumberOfPossiblyDisplayedSamples()));
+                    qRound((float)m_dataPlot->getNumberOfPossiblyDisplayedSamples()));
             m_dataPlot->setStartIndex(si);
             break;
 
@@ -352,7 +352,7 @@ void DataView::jumpToRightMarker() throw ()
 void DataView::saveScreenshot() throw ()
 {
     std::auto_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file to save")));
-    filedialog->setFilter(tr("PNG files (*.png)"));
+    filedialog->setNameFilter(tr("PNG files (*.png)"));
     filedialog->setFileMode(QFileDialog::AnyFile);
     filedialog->setDirectory(QDir::currentPath());
     filedialog->setDefaultSuffix("png");
@@ -375,7 +375,7 @@ void DataView::exportToCSV()
     throw ()
 {
     std::auto_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file name for exported data")));
-    filedialog->setFilter(tr("CSV files (*.csv)"));
+    filedialog->setNameFilter(tr("CSV files (*.csv)"));
     filedialog->setFileMode(QFileDialog::AnyFile);
     filedialog->setDirectory(QDir::currentPath());
     filedialog->setDefaultSuffix("csv");
@@ -435,7 +435,7 @@ void DataView::save()
     throw ()
 {
     std::auto_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file to save")));
-    filedialog->setFilter(tr("DAT files (*.dat)"));
+    filedialog->setNameFilter(tr("DAT files (*.dat)"));
     filedialog->setFileMode(QFileDialog::AnyFile);
     filedialog->setDirectory(QDir::currentPath());
     filedialog->setDefaultSuffix("dat");

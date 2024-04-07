@@ -1,12 +1,27 @@
 The Fabulous Logic Analyzer #1
 ==============================
 
-This is a simple logic analyzer software. Read the documentation in HTML format
-in the doc/user subdirectory to get started with installation and running
-of the software.
+This is a simple logic analyzer software, originally written by Bernhard Walle.
+The code has been ported to QT5 by Alberto Busso and it has been moved from
+SourceForge to github for easy maintenance.
+The latest version from Bernhard Walle is still available here:
+https://sourceforge.net/projects/tfla-01.berlios/files/
+
+A modified version running a 16 channels analyser has been also written by
+Kevin Koster and is available here:
+http://www.ombertech.com/cnk/tfla-16/index.htm
+
+However, this is not yet ported in QT5 (it will be done soon).
+
+Read the documentation in HTML format in the doc/user subdirectory to get
+started with installation and running of the software.
 
 Since the documentation is in DocBook and gets compiled during installation,
-read http://tfla-01.berlios.de/manual/en/ if you have a source tarball and if
-you don't want to read XML sources.
+read http://www.ombertech.com/cnk/tfla-16/manual/en/ if you have a
+source tarball and if you don't want to read XML sources.
 
+TFLA-01's original webpage was at (now offline):
+http://tfla-01.berlios.de/
 
+Wayback Machine link:
+http://web.archive.org/web/20100528233903/http://tfla-01.berlios.de:80/

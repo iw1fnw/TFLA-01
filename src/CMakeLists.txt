@@ -39,7 +39,7 @@ set(tfla01_SRCS
 if (IEEE1284_FOUND)
     include(hardware/CMakeLists.txt)
     set(tfla01_SRCS ${tfla01_SRCS} ${parport_SRCS})
-endif (IEEE1284_FOUND)
+endif ()
 
 # sets protocol_SRCS
 include(protocol/CMakeLists.txt)
@@ -74,30 +74,30 @@ option (BUILD_UTILS "Build test programs (only useful for development)")
 # translations
 option (UPDATE_TRANSLATIONS "Update source translation *.ts files")
 if (UPDATE_TRANSLATIONS)
-  QT4_CREATE_TRANSLATION(
+  QT5_CREATE_TRANSLATION(
     tfla01_qmfile
     ${tfla01_SRCS} ${tfla01_MOC_SRCS}
     ${PROJECT_SOURCE_DIR}/share/tfla-01/translations/de.ts
     )
 else (UPDATE_TRANSLATIONS)
-  QT4_ADD_TRANSLATION(tfla01_qmfile ${PROJECT_SOURCE_DIR}/share/tfla-01/translations/de.ts)
+  QT5_ADD_TRANSLATION(tfla01_qmfile ${PROJECT_SOURCE_DIR}/share/tfla-01/translations/de.ts)
 endif (UPDATE_TRANSLATIONS)
 
 # Compiled-in pixmaps
 set(QtApp_RCCS ${PROJECT_SOURCE_DIR}/tfla-01.qrc)
 
 # generate rules for building source files from the resources
-QT4_ADD_RESOURCES(tfla01_RCC_SRCS ${PROJECT_SOURCE_DIR}/tfla-01.qrc)
+QT5_ADD_RESOURCES(tfla01_RCC_SRCS ${PROJECT_SOURCE_DIR}/tfla-01.qrc)
 
 # generate rules for building source files that moc generates
-QT4_WRAP_CPP(tfla01_MOC_SRCS ${tfla01_MOCS})
+QT5_WRAP_CPP(tfla01_MOC_SRCS ${tfla01_MOCS})
 
 # build sources, moc'd sources, and rcc'd sources
 add_executable(tfla-01 WIN32
     ${tfla01_SRCS} ${tfla01_MOC_SRCS} ${tfla01_RCC_SRCS} ${tfla01_qmfile}
 )
 
-target_link_libraries(tfla-01 ${QT_LIBRARIES} ${IEEE1284_LIBRARIES})
+target_link_libraries(tfla-01 Qt5::Widgets Qt5::Network ${IEEE1284_LIBRARIES})
 
 #
 # Installation
