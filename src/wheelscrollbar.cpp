@@ -35,14 +35,14 @@ void WheelScrollBar::wheelEvent(QWheelEvent* e)
 {
     switch (e->modifiers()) {
         case Qt::ShiftModifier:
-            if (e->delta() > 0)
+            if (e->angleDelta().y() > 0)
                 emit actionTriggered(QAbstractSlider::SliderPageStepSub);
             else
                 emit actionTriggered(QAbstractSlider::SliderPageStepAdd);
             break;
 
         case Qt::NoModifier:
-            if (e->delta() > 0)
+            if (e->angleDelta().y() > 0)
                 emit actionTriggered(QAbstractSlider::SliderSingleStepSub);
             else
                 emit actionTriggered(QAbstractSlider::SliderSingleStepAdd);

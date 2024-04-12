@@ -14,6 +14,8 @@
  *
  * -------------------------------------------------------------------------------------------------
  */
+#include <algorithm>
+
 #include "analyzer.h"
 #include "settings.h"
 
@@ -46,7 +48,7 @@ bool ProtocolAnalyzer::readChannelSetting() throw ()
 
     // check for uniqueness
     QList<int> channelNumbers = m_channelMap.values();
-    qSort(channelNumbers);
+    std::sort(channelNumbers.begin(), channelNumbers.end());
     for (int i = 0; i < channelNumbers.size()-1; ++i)
         if (channelNumbers[i] == channelNumbers[i+1])
             return false;

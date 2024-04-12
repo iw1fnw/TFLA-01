@@ -148,7 +148,7 @@ void Tfla01::startAnalyze()
 
     Settings& set = Settings::set();
 
-    std::auto_ptr<DataCollector> coll(new DataCollector(set.readNumEntry("Hardware/Parport")));
+    std::unique_ptr<DataCollector> coll(new DataCollector(set.readNumEntry("Hardware/Parport")));
     coll->setCollectingTime(  (  set.readNumEntry("Measuring/Triggering/Minutes") * 60 +
                                  set.readNumEntry("Measuring/Triggering/Seconds") ) * 1000  );
     coll->setTriggering(true, set.readNumEntry("Measuring/Triggering/Value"),

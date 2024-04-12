@@ -38,7 +38,7 @@ void UpdateChecker::checkForUpdate()
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     QNetworkRequest request;
-    request.setUrl(QUrl("http://tfla-01.berlios.de/last_version.txt"));
+    request.setUrl(QUrl("https://raw.githubusercontent.com/iw1fnw/TFLA-01/main/VERSION"));
 
     connect(manager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(replyFinished(QNetworkReply*)));

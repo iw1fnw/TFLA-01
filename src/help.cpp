@@ -37,7 +37,7 @@
 // -------------------------------------------------------------------------------------------------
 void Help::showAbout()
 {
-    std::auto_ptr<AboutDialog> dlg(new AboutDialog(Tfla01::instance()));
+    std::unique_ptr<AboutDialog> dlg(new AboutDialog(Tfla01::instance()));
 
     dlg->exec();
 }

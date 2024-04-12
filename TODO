@@ -1,6 +1,9 @@
 TODO
 ====
 
+ * Check all compile warnings, and remove deprecated functions (in particular find a solution for the throw() deprecation)
+ * Check make-install directories
+ * Remove (or correct) check for updates at start-up, giving error
  * Clean-up documentation to reflect new version
  * Testing all functionalities for bugs due to porting
 

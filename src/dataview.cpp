@@ -164,21 +164,21 @@ void DataView::wheelEvent(QWheelEvent* e)
 {
     switch (e->modifiers()) {
         case Qt::ControlModifier:
-            if (e->delta() > 0)
+            if (e->angleDelta().y() > 0)
                 zoomIn();
             else
                 zoomOut();
             break;
 
         case Qt::ShiftModifier:
-            if (e->delta() > 0)
+            if (e->angleDelta().y() > 0)
                 navigateLeftPage();
             else
                 navigateRightPage();
             break;
 
         case Qt::NoModifier:
-            if (e->delta() > 0)
+            if (e->angleDelta().y() > 0)
                 navigateLeft();
             else
                 navigateRight();
@@ -351,7 +351,7 @@ void DataView::jumpToRightMarker() throw ()
 // -------------------------------------------------------------------------------------------------
 void DataView::saveScreenshot() throw ()
 {
-    std::auto_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file to save")));
+    std::unique_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file to save")));
     filedialog->setNameFilter(tr("PNG files (*.png)"));
     filedialog->setFileMode(QFileDialog::AnyFile);
     filedialog->setDirectory(QDir::currentPath());
@@ -374,7 +374,7 @@ void DataView::saveScreenshot() throw ()
 void DataView::exportToCSV()
     throw ()
 {
-    std::auto_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file name for exported data")));
+    std::unique_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file name for exported data")));
     filedialog->setNameFilter(tr("CSV files (*.csv)"));
     filedialog->setFileMode(QFileDialog::AnyFile);
     filedialog->setDirectory(QDir::currentPath());
@@ -434,7 +434,7 @@ void DataView::exportToCSV()
 void DataView::save()
     throw ()
 {
-    std::auto_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file to save")));
+    std::unique_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file to save")));
     filedialog->setNameFilter(tr("DAT files (*.dat)"));
     filedialog->setFileMode(QFileDialog::AnyFile);
     filedialog->setDirectory(QDir::currentPath());

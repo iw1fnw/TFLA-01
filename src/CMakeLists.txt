@@ -80,7 +80,10 @@ if (UPDATE_TRANSLATIONS)
     ${PROJECT_SOURCE_DIR}/share/tfla-01/translations/de.ts
     )
 else (UPDATE_TRANSLATIONS)
-  QT5_ADD_TRANSLATION(tfla01_qmfile ${PROJECT_SOURCE_DIR}/share/tfla-01/translations/de.ts)
+  QT5_ADD_TRANSLATION(
+    tfla01_qmfile
+    ${PROJECT_SOURCE_DIR}/share/tfla-01/translations/de.ts
+    )
 endif (UPDATE_TRANSLATIONS)
 
 # Compiled-in pixmaps

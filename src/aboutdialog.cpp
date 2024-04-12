@@ -43,7 +43,7 @@ AboutDialog::AboutDialog(QWidget* parent)
 
     QLabel* titleIcon = new QLabel;
     titleIcon->setPixmap(QPixmap(":/tfla-01_32.png"));
-    QLabel* titleText = new QLabel(tr("<p><b>The Fabulous Logic Analyzer "VERSION_STRING"</b></p>"));
+    QLabel* titleText = new QLabel(tr("<p><b>The Fabulous Logic Analyzer " VERSION_STRING "</b></p>"));
 
     titleBoxLayout->addWidget(titleIcon);
     titleBoxLayout->setStretchFactor(titleIcon, 0);
