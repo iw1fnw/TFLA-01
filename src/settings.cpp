@@ -23,7 +23,7 @@
 
 // -------------------------------------------------------------------------------------------------
 Settings::Settings()
-    throw ()
+    noexcept
   : m_qSettings("bwalle.de", "tfla-01")
 {
     m_qSettings.beginGroup("/tfla-01");
@@ -63,7 +63,7 @@ Settings::Settings()
 
 // -------------------------------------------------------------------------------------------------
 void Settings::writeEntry(const QString & key, const QString & value)
-    throw ()
+    noexcept
 {
     m_qSettings.setValue(key, value);
 }
@@ -71,7 +71,7 @@ void Settings::writeEntry(const QString & key, const QString & value)
 
 // -------------------------------------------------------------------------------------------------
 void Settings::writeEntry(const QString & key, double value)
-    throw ()
+    noexcept
 {
     m_qSettings.setValue(key, value);
 }
@@ -79,7 +79,7 @@ void Settings::writeEntry(const QString & key, double value)
 
 // -------------------------------------------------------------------------------------------------
 void Settings::writeEntry(const QString & key, int value)
-    throw ()
+    noexcept
 {
     m_qSettings.setValue(key, value);
 }
@@ -87,7 +87,7 @@ void Settings::writeEntry(const QString & key, int value)
 
 // -------------------------------------------------------------------------------------------------
 void Settings::writeEntry(const QString & key, bool value)
-    throw ()
+    noexcept
 {
     m_qSettings.setValue(key, value);
 }
@@ -95,7 +95,7 @@ void Settings::writeEntry(const QString & key, bool value)
 
 // -------------------------------------------------------------------------------------------------
 QString Settings::readEntry(const QString & key)
-    throw ()
+    noexcept
 {
     QString string;
     if (m_qSettings.contains(key))
@@ -110,7 +110,7 @@ QString Settings::readEntry(const QString & key)
 
 // -------------------------------------------------------------------------------------------------
 int Settings::readNumEntry (const QString & key, int def)
-    throw ()
+    noexcept
 {
     int ret = -1;
     if (m_qSettings.contains(key))
@@ -127,7 +127,7 @@ int Settings::readNumEntry (const QString & key, int def)
 
 // -------------------------------------------------------------------------------------------------
 double Settings::readDoubleEntry(const QString & key)
-    throw ()
+    noexcept
 {
     double ret = 0.0;
     if (m_qSettings.contains(key))
@@ -142,7 +142,7 @@ double Settings::readDoubleEntry(const QString & key)
 
 // -------------------------------------------------------------------------------------------------
 bool Settings::readBoolEntry(const QString & key)
-    throw ()
+    noexcept
 {
     bool ret = false;
     if (m_qSettings.contains(key))
@@ -157,7 +157,7 @@ bool Settings::readBoolEntry(const QString & key)
 
 // -------------------------------------------------------------------------------------------------
 Settings& Settings::set()
-    throw ()
+    noexcept
 {
     static Settings instanz;
 

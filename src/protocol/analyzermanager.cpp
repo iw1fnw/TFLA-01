@@ -41,22 +41,19 @@ AnalyzerManager::~AnalyzerManager()
 }
 
 // -------------------------------------------------------------------------------------------------
-void AnalyzerManager::registerAnalyzer(ProtocolAnalyzer *analyzer)
-    throw ()
+void AnalyzerManager::registerAnalyzer(ProtocolAnalyzer *analyzer) noexcept
 {
     m_analyzers[analyzer->getId()] = analyzer;
 }
 
 // -------------------------------------------------------------------------------------------------
-QList<ProtocolAnalyzer *> AnalyzerManager::getAnalyzers() const
-    throw ()
+QList<ProtocolAnalyzer *> AnalyzerManager::getAnalyzers() const noexcept
 {
     return m_analyzers.values();
 }
 
 // -------------------------------------------------------------------------------------------------
-QStringList AnalyzerManager::getAnalyzerNames() const
-    throw ()
+QStringList AnalyzerManager::getAnalyzerNames() const noexcept
 {
     QStringList names;
     for (QMap<QString, ProtocolAnalyzer *>::const_iterator it = m_analyzers.begin(); it != m_analyzers.end(); ++it)
@@ -66,21 +63,19 @@ QStringList AnalyzerManager::getAnalyzerNames() const
 }
 
 // -------------------------------------------------------------------------------------------------
-QStringList AnalyzerManager::getAnalyzerIds() const
-    throw ()
+QStringList AnalyzerManager::getAnalyzerIds() const noexcept
 {
     return m_analyzers.keys();
 }
 
 // -------------------------------------------------------------------------------------------------
-ProtocolAnalyzer *AnalyzerManager::getAnalyzerById(const QString &id) const
-    throw ()
+ProtocolAnalyzer *AnalyzerManager::getAnalyzerById(const QString &id) const noexcept
 {
     return m_analyzers.value(id, NULL);
 }
 
 // -------------------------------------------------------------------------------------------------
-QStringList AnalyzerManager::getSettingsStringList() const throw ()
+QStringList AnalyzerManager::getSettingsStringList() const noexcept
 {
     QStringList ret;
     for (QMap<QString, ProtocolAnalyzer *>::const_iterator it = m_analyzers.begin(); it != m_analyzers.end(); ++it) {
@@ -97,7 +92,7 @@ QStringList AnalyzerManager::getSettingsStringList() const throw ()
 }
 
 // -------------------------------------------------------------------------------------------------
-QStringList AnalyzerManager::getDisplayStringList() const throw ()
+QStringList AnalyzerManager::getDisplayStringList() const noexcept
 {
     QStringList ret;
     for (QMap<QString, ProtocolAnalyzer *>::const_iterator it = m_analyzers.begin(); it != m_analyzers.end(); ++it) {

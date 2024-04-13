@@ -28,13 +28,13 @@
 
 // -------------------------------------------------------------------------------------------------
 UpdateChecker::UpdateChecker(QWidget *parentWidget)
-    throw ()
+    noexcept
     : QObject(parentWidget)
 {}
 
 // -------------------------------------------------------------------------------------------------
 void UpdateChecker::checkForUpdate()
-    throw ()
+    noexcept
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     QNetworkRequest request;
@@ -49,7 +49,7 @@ void UpdateChecker::checkForUpdate()
 
 // -------------------------------------------------------------------------------------------------
 void UpdateChecker::replyFinished(QNetworkReply *reply)
-    throw ()
+    noexcept
 {
     QByteArray version = reply->readAll();
     QString versionString = QString::fromUtf8(version);
@@ -67,7 +67,7 @@ void UpdateChecker::replyFinished(QNetworkReply *reply)
 
 // -------------------------------------------------------------------------------------------------
 int UpdateChecker::versionCompare(const QString &a, const QString &b)
-    throw ()
+    noexcept
 {
     int major_a, minor_a, patch_a;
     int major_b, minor_b, patch_b;

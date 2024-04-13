@@ -28,8 +28,7 @@
 #include "aboutdialog.h"
 
 // -------------------------------------------------------------------------------------------------
-AboutDialog::AboutDialog(QWidget* parent)
-    throw ()
+AboutDialog::AboutDialog(QWidget* parent) noexcept
     : QDialog(parent)
 {
     m_mainLayout = new QVBoxLayout(this);

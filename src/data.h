@@ -27,18 +27,18 @@ class Data
         enum LineState { LS_ALWAYS_L, LS_ALWAYS_H, LS_CHANGING };
 
     public:
-        Data() throw ();
+        Data() noexcept;
 
         ByteVector& bytes() throw();
         const ByteVector& bytes() const throw();
 
         double getMsecsForSample(int sample) const throw();
 
-        unsigned int getMeasuringTime() const throw ();
-        void setMeasuringTime(unsigned int time) throw ();
+        unsigned int getMeasuringTime() const noexcept;
+        void setMeasuringTime(unsigned int time) noexcept;
 
-        LineState getLineState(int line) const throw ();
-        void calculateLineStates() throw ();
+        LineState getLineState(int line) const noexcept;
+        void calculateLineStates() noexcept;
 
     private:
         ByteVector   m_bytes;

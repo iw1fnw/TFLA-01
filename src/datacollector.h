@@ -36,24 +36,23 @@ class DataCollector : public QThread
         static const int INITIAL_VECTOR_SPACE;
 
     public:
-        DataCollector(unsigned int portNumber) throw ();
+        DataCollector(unsigned int portNumber) noexcept;
 
-        void setTriggering(bool enabled, unsigned char value = 0x00, unsigned char mask = 0x00)
-        throw ();
-        bool isTriggeringEnabled() const throw ();
-        byte getTriggeringValue() const throw ();
-        byte getTriggeringMask() const throw ();
+        void setTriggering(bool enabled, unsigned char value = 0x00, unsigned char mask = 0x00) noexcept;
+        bool isTriggeringEnabled() const noexcept;
+        byte getTriggeringValue() const noexcept;
+        byte getTriggeringMask() const noexcept;
 
-        void setCollectingTime(int msecs) throw ();
-        int getCollectingTime() const throw ();
+        void setCollectingTime(int msecs) noexcept;
+        int getCollectingTime() const noexcept;
 
-        void setNumberOfSkips(int numberOfSkips) throw ();
-        int getNumberOfSkips() const throw ();
+        void setNumberOfSkips(int numberOfSkips) noexcept;
+        int getNumberOfSkips() const noexcept;
 
-        Data getData() const throw ();
-        QString getErrorString() const throw ();
+        Data getData() const noexcept;
+        QString getErrorString() const noexcept;
 
-        void stop()  throw ();
+        void stop() noexcept;
 
     protected:
         void run();

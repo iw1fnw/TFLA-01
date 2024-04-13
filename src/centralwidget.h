@@ -28,10 +28,10 @@ class CentralWidget : public QFrame
     Q_OBJECT
 
     public:
-        CentralWidget(QWidget* parent) throw ();
+        CentralWidget(QWidget* parent) noexcept;
 
-        DataView* getDataView() const throw ();
-        ParameterBox* getParametersBox() const throw ();
+        DataView* getDataView() const noexcept;
+        ParameterBox* getParametersBox() const noexcept;
 
     private:
         DataView*           m_dataView;

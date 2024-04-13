@@ -23,27 +23,26 @@
 class I2cAnalyzer : public ProtocolAnalyzer
 {
     public:
-        QString getId() const throw ();
-        QString getName() const throw ();
-        QStringList getChannels() const throw ();
+        QString getId() const noexcept;
+        QString getName() const noexcept;
+        QStringList getChannels() const noexcept;
 
-        void analyze(const Data &data, int start, int end, QTextStream &output)
-        throw (TfError);
+        void analyze(const Data &data, int start, int end, QTextStream &output);
 
     protected:
-        void setI2C_Masks() throw ();
-        void setSize(int end) throw ();
-        int  getByte() throw ();
-        int  getStart() throw ();
-        int  Clock_Pulse() throw ();
-        void writeCmd(QTextStream &output, QString text) throw ();
-        void writeValue(QTextStream &output, int val) throw ();
-        void writeError(int val, QTextStream &output) throw();
-        void writeACK(int val, QTextStream &output) throw();
-        void processUnknowIC(int val, QTextStream &output) throw ();
-        void processPCF8574(int val, QTextStream &output) throw ();
-        void processRTC(int val, QTextStream &output) throw ();
-        void Decode_RTC(QTextStream &output, int val) throw ();
+        void setI2C_Masks() noexcept;
+        void setSize(int end) noexcept;
+        int  getByte() noexcept;
+        int  getStart() noexcept;
+        int  Clock_Pulse() noexcept;
+        void writeCmd(QTextStream &output, QString text) noexcept;
+        void writeValue(QTextStream &output, int val) noexcept;
+        void writeError(int val, QTextStream &output) noexcept;
+        void writeACK(int val, QTextStream &output) noexcept;
+        void processUnknowIC(int val, QTextStream &output) noexcept;
+        void processPCF8574(int val, QTextStream &output) noexcept;
+        void processRTC(int val, QTextStream &output) noexcept;
+        void Decode_RTC(QTextStream &output, int val) noexcept;
 
     private:
         unsigned char  m_SCL_Mask;

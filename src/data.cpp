@@ -20,7 +20,7 @@
 
 
 // -------------------------------------------------------------------------------------------------
-Data::Data() throw ()
+Data::Data() noexcept
     : m_measuringTime(0)
 {
     for (int i = 0; i < NUMBER_OF_BITS_PER_BYTE; i++)
@@ -43,27 +43,27 @@ const ByteVector& Data::bytes() const throw()
 
 
 // -------------------------------------------------------------------------------------------------
-unsigned int Data::getMeasuringTime() const throw ()
+unsigned int Data::getMeasuringTime() const noexcept
 {
     return m_measuringTime;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void Data::setMeasuringTime(unsigned int time) throw ()
+void Data::setMeasuringTime(unsigned int time) noexcept
 {
     m_measuringTime = time;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-Data::LineState Data::getLineState(int line) const throw ()
+Data::LineState Data::getLineState(int line) const noexcept
 {
     return m_lineStates[line];
 }
 
 // -------------------------------------------------------------------------------------------------
-void Data::calculateLineStates() throw ()
+void Data::calculateLineStates() noexcept
 {
     if (m_bytes.size() < 1)
         return;

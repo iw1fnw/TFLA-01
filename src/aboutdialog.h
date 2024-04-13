@@ -27,7 +27,7 @@ class AboutDialog : public QDialog
     Q_OBJECT
 
     public:
-        AboutDialog(QWidget* parent) throw ();
+        AboutDialog(QWidget* parent) noexcept;
 
     protected:
         void setupAboutTab();

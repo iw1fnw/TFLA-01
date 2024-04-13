@@ -35,7 +35,7 @@
 const int DataCollector::INITIAL_VECTOR_SPACE   = 1000000;
 
 // -------------------------------------------------------------------------------------------------
-DataCollector::DataCollector(unsigned int port) throw ()
+DataCollector::DataCollector(unsigned int port) noexcept
     : m_portNumber(port)
     , m_triggering(false)
     , m_triggeringMask(0)
@@ -48,7 +48,7 @@ DataCollector::DataCollector(unsigned int port) throw ()
 }
 
 // -------------------------------------------------------------------------------------------------
-void DataCollector::setTriggering(bool enabled, unsigned char value, unsigned char mask) throw ()
+void DataCollector::setTriggering(bool enabled, unsigned char value, unsigned char mask) noexcept
 {
     m_triggering = enabled;
     m_triggeringValue = value;
@@ -57,70 +57,70 @@ void DataCollector::setTriggering(bool enabled, unsigned char value, unsigned ch
 
 
 // -------------------------------------------------------------------------------------------------
-bool DataCollector::isTriggeringEnabled() const throw ()
+bool DataCollector::isTriggeringEnabled() const noexcept
 {
     return m_triggering;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-unsigned char DataCollector::getTriggeringValue() const throw ()
+unsigned char DataCollector::getTriggeringValue() const noexcept
 {
     return m_triggeringValue;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-unsigned char DataCollector::getTriggeringMask() const throw ()
+unsigned char DataCollector::getTriggeringMask() const noexcept
 {
     return m_triggeringMask;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataCollector::setCollectingTime(int time) throw ()
+void DataCollector::setCollectingTime(int time) noexcept
 {
     m_collectingTime = time;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-int DataCollector::getCollectingTime() const throw ()
+int DataCollector::getCollectingTime() const noexcept
 {
     return m_collectingTime;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataCollector::setNumberOfSkips(int numberOfSkips) throw ()
+void DataCollector::setNumberOfSkips(int numberOfSkips) noexcept
 {
     m_numberOfSkips = numberOfSkips;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-int DataCollector::getNumberOfSkips() const throw ()
+int DataCollector::getNumberOfSkips() const noexcept
 {
     return m_numberOfSkips;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-Data DataCollector::getData() const throw ()
+Data DataCollector::getData() const noexcept
 {
     return m_data;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-QString DataCollector::getErrorString() const throw ()
+QString DataCollector::getErrorString() const noexcept
 {
     return m_errorString;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataCollector::stop()  throw ()
+void DataCollector::stop()  noexcept
 {
     m_stop = true;
 }

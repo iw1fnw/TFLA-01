@@ -25,7 +25,7 @@
 
 // -------------------------------------------------------------------------------------------------
 TriggerWidget::TriggerWidget(QWidget* parent)
-    throw ()
+    noexcept
     : QWidget(parent)
 {
     QHBoxLayout* layout = new QHBoxLayout;
@@ -56,7 +56,7 @@ TriggerWidget::TriggerWidget(QWidget* parent)
 
 // -------------------------------------------------------------------------------------------------
 byte TriggerWidget::getMask() const
-    throw ()
+    noexcept
 {
     byte ret = 0;
 
@@ -70,7 +70,7 @@ byte TriggerWidget::getMask() const
 
 // -------------------------------------------------------------------------------------------------
 byte TriggerWidget::getValue() const
-    throw ()
+    noexcept
 {
     byte ret = 0;
 
@@ -84,7 +84,7 @@ byte TriggerWidget::getValue() const
 
 // -------------------------------------------------------------------------------------------------
 void TriggerWidget::valueChangedHandler()
-    throw ()
+    noexcept
 {
     emit valueChanged(getMask(), getValue());
 }
@@ -92,7 +92,7 @@ void TriggerWidget::valueChangedHandler()
 
 // -------------------------------------------------------------------------------------------------
 void TriggerWidget::setValue(byte value, byte mask)
-    throw ()
+    noexcept
 {
     for (int i = 0; i < NUMBER_OF_BITS_PER_BYTE; i++) {
         if (!(mask & (1 << i)))

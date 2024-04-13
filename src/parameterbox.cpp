@@ -33,7 +33,7 @@
 
 // -------------------------------------------------------------------------------------------------
 ParameterBox::ParameterBox(QWidget* parent)
-    throw ()
+    noexcept
     : QFrame(parent)
     , m_leftValue(-1.0)
     , m_rightValue(-1.0)
@@ -126,7 +126,7 @@ ParameterBox::ParameterBox(QWidget* parent)
 
 // -------------------------------------------------------------------------------------------------
 void ParameterBox::timeValueChanged(const QTime& time)
-    throw ()
+    noexcept
 {
     Settings& set = Settings::set();
     set.writeEntry("Measuring/Triggering/Minutes", time.minute());
@@ -137,7 +137,7 @@ void ParameterBox::timeValueChanged(const QTime& time)
 
 // -------------------------------------------------------------------------------------------------
 void ParameterBox::triggerValueChanged(byte mask, byte value)
-    throw ()
+    noexcept
 {
     Settings& set = Settings::set();
     set.writeEntry("Measuring/Triggering/Value", value);
@@ -146,14 +146,14 @@ void ParameterBox::triggerValueChanged(byte mask, byte value)
 
 
 // -------------------------------------------------------------------------------------------------
-void ParameterBox::sliderValueChanged(int value) throw ()
+void ParameterBox::sliderValueChanged(int value) noexcept
 {
     Settings::set().writeEntry("Measuring/Number_Of_Skips", MAX_SLIDER_VALUE - value);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void ParameterBox::setLeftMarker(double ms) throw ()
+void ParameterBox::setLeftMarker(double ms) noexcept
 {
     m_leftValue = ms;
     updateValues();
@@ -161,7 +161,7 @@ void ParameterBox::setLeftMarker(double ms) throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void ParameterBox::setRightMarker(double ms) throw ()
+void ParameterBox::setRightMarker(double ms) noexcept
 {
     m_rightValue = ms;
     updateValues();
@@ -169,7 +169,7 @@ void ParameterBox::setRightMarker(double ms) throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void ParameterBox::updateValues() throw ()
+void ParameterBox::updateValues() noexcept
 {
     QLocale loc;
 

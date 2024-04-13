@@ -39,23 +39,23 @@ class Tfla01 : public QMainWindow
         static Tfla01 *instance();
 
     protected:
-        void initActions() throw ();
-        void initMenubar() throw ();
-        void initToolbar() throw ();
-        void connectSignalsAndSlots() throw ();
+        void initActions() noexcept;
+        void initMenubar() noexcept;
+        void initToolbar() noexcept;
+        void connectSignalsAndSlots() noexcept;
         void closeEvent(QCloseEvent* evt);
-        void portChange(int portNumber) throw ();
-        void updateProtocolEnabledStatus() throw ();
+        void portChange(int portNumber) noexcept;
+        void updateProtocolEnabledStatus() noexcept;
 
     protected slots:
-        void portChanged(QAction *action) throw ();
-        void startAnalyze() throw ();
-        void stopAnalyze() throw ();
-        void changeForegroundColor() throw ();
-        void changeLeftColor() throw ();
-        void changeRightColor() throw ();
-        void changeChannelAssignment() throw ();
-        void analyzeTriggered(QAction *) throw ();
+        void portChanged(QAction *action) noexcept;
+        void startAnalyze() noexcept;
+        void stopAnalyze() noexcept;
+        void changeForegroundColor() noexcept;
+        void changeLeftColor() noexcept;
+        void changeRightColor() noexcept;
+        void changeChannelAssignment() noexcept;
+        void analyzeTriggered(QAction *) noexcept;
 
     private:
         static Tfla01 *m_instance;
@@ -101,7 +101,7 @@ class Tfla01 : public QMainWindow
 
     private:
         Q_DISABLE_COPY(Tfla01);
-        Tfla01() throw ();
+        Tfla01() noexcept;
         virtual ~Tfla01() {}
 };
 

@@ -47,7 +47,7 @@ Tfla01 *Tfla01::m_instance = NULL;
 
 // -------------------------------------------------------------------------------------------------
 Tfla01::Tfla01()
-    throw ()
+    noexcept
   : m_portsMenu(NULL)
 {
     // Title and Icon
@@ -104,7 +104,7 @@ Tfla01 *Tfla01::instance()
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::portChange(int portNumber)
-    throw ()
+    noexcept
 {
 #if HAVE_LIBIEEE1284
     Settings::set().writeEntry("Hardware/Parport", portNumber);
@@ -119,7 +119,7 @@ void Tfla01::portChange(int portNumber)
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::updateProtocolEnabledStatus()
-    throw ()
+    noexcept
 {
     QList<QAction *> analyzeActions = m_actions.analyzeActions->actions();
     for (int i = 0; i < analyzeActions.size(); ++i) {
@@ -131,14 +131,14 @@ void Tfla01::updateProtocolEnabledStatus()
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::portChanged(QAction *action)
-    throw ()
+    noexcept
 {
     portChange(action->data().toInt());
 }
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::startAnalyze()
-    throw ()
+    noexcept
 {
     QLocale loc;
 
@@ -196,14 +196,14 @@ end:
 
 
 // -------------------------------------------------------------------------------------------------
-void Tfla01::stopAnalyze() throw ()
+void Tfla01::stopAnalyze() noexcept
 {
     m_analyzingActive = false;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void Tfla01::changeForegroundColor()  throw ()
+void Tfla01::changeForegroundColor()  noexcept
 {
     QString currentColor = Settings::set().readEntry("UI/Foreground_Color_Line");
     QColor col = QColorDialog::getColor(currentColor, this);
@@ -217,7 +217,7 @@ void Tfla01::changeForegroundColor()  throw ()
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::changeLeftColor()
-    throw ()
+    noexcept
 {
     QString currentColor = Settings::set().readEntry("UI/Left_Marker_Color");
     QColor col = QColorDialog::getColor(currentColor, this);
@@ -230,7 +230,7 @@ void Tfla01::changeLeftColor()
 
 
 // -------------------------------------------------------------------------------------------------
-void Tfla01::changeRightColor()  throw ()
+void Tfla01::changeRightColor()  noexcept
 {
     QString currentColor = Settings::set().readEntry("UI/Right_Marker_Color");
     QColor col = QColorDialog::getColor(currentColor, this);
@@ -244,7 +244,7 @@ void Tfla01::changeRightColor()  throw ()
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::changeChannelAssignment()
-    throw ()
+    noexcept
 {
     ProtocolSettingsDialog dialog(this);
     dialog.exec();
@@ -253,7 +253,7 @@ void Tfla01::changeChannelAssignment()
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::analyzeTriggered(QAction *action)
-    throw ()
+    noexcept
 {
     QString protocol = action->data().toString();
     ProtocolAnalyzer *analyzer = AnalyzerManager::instance().getAnalyzerById(protocol);
@@ -274,7 +274,7 @@ void Tfla01::closeEvent(QCloseEvent* e)
 
 
 // -------------------------------------------------------------------------------------------------
-void Tfla01::initMenubar() throw ()
+void Tfla01::initMenubar() noexcept
 {
     // ----- File ----------------------------------------------------------------------------------
     QMenu* fileMenu = new QMenu(tr("&File"), this);
@@ -359,7 +359,7 @@ void Tfla01::initMenubar() throw ()
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::initActions()
-    throw ()
+    noexcept
 {
     // ----- File ----------------------------------------------------------------------------------
     m_actions.openAction = new QAction(createIcon("stock_open", "document-open"),
@@ -495,7 +495,7 @@ void Tfla01::initActions()
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::initToolbar()
-    throw ()
+    noexcept
 {
     QToolBar* applicationToolbar = new QToolBar(tr("Application"), this);
     addToolBar(applicationToolbar);
@@ -524,7 +524,7 @@ void Tfla01::initToolbar()
 
 // -------------------------------------------------------------------------------------------------
 void Tfla01::connectSignalsAndSlots()
-    throw ()
+    noexcept
 {
 
     connect(m_actions.openAction,                  SIGNAL(triggered()),

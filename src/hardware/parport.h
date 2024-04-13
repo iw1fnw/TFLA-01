@@ -75,16 +75,14 @@ class Parport
          *        as a set of flags, one per bit, which the library sets or clears as appropriate.
          * @exception ParportError if the opening failed
          */
-        void open(int flags = 0, int* capabilities = NULL)
-        throw (ParportError);
+        void open(int flags = 0, int* capabilities = NULL);
 
         /**
          * Closes the port.
          *
          * @exception ParportError if the closing failed
          */
-        void close()
-        throw (ParportError);
+        void close();
 
         /**
          * Claim access to the port. claim() must be called on an open port before any other
@@ -92,15 +90,13 @@ class Parport
          *
          * @exception ParportError if the closing failed
          */
-        void claim()
-        throw (ParportError);
+        void claim();
 
         /**
          * This function undoes the effect of claim() by releasing the port for use by other
          * drivers. It is good practice to release the port whenever convenient.
          */
-        void release()
-        throw ();
+        void release() noexcept;
 
         /**
          * Reads data. See http://cyberelk.net/tim/libieee1284/interface/rn02re12.html.
@@ -108,8 +104,7 @@ class Parport
          * @return the read data value
          * @exception ParportError if an error occured
          */
-        byte readData()
-        throw (ParportError);
+        byte readData();
 
         /**
          * Writes data to the data pins. See
@@ -117,8 +112,7 @@ class Parport
          *
          * @param data the data to write
          */
-        void writeData(byte data)
-        throw ();
+        void writeData(byte data) noexcept;
 
         /**
          * Sets the control lines. Use a constant from the enum Parport::ControlBits.
@@ -126,8 +120,7 @@ class Parport
          *
          * @param[in] data the data to write
          */
-        void writeControl(byte data)
-        throw ();
+        void writeControl(byte data) noexcept;
 
         /**
          * Checks if the hardware parallel port is capable of TRISTATE.
@@ -138,8 +131,7 @@ class Parport
          * @return @c true if the parallel port is capable of tristate (or if the function
          *         is not implemented, @c false if it is not capable of tristate
          */
-        bool checkTristate()
-        throw ();
+        bool checkTristate() noexcept;
 
         /**
          * Sets the data direction.
@@ -148,8 +140,7 @@ class Parport
          * @param reverse @c true for read mode, @c false for write mode
          * @exception ParportError if an error occured
          */
-        void setDataDirection(bool reverse)
-        throw (ParportError);
+        void setDataDirection(bool reverse);
 
         /**
          * Wait for data.
@@ -165,40 +156,35 @@ class Parport
          *         @c false because the timeout has been elapsed
          * @throw ParportError if an error occured
          */
-        bool waitData(int mask, int val, struct timeval* timeout, bool poll)
-        throw (ParportError);
+        bool waitData(int mask, int val, struct timeval* timeout, bool poll);
 
         /**
          * Returns the name of the parallel port.
          *
          * @return the name as string
          */
-        QString getName() const
-        throw ();
+        QString getName() const noexcept;
 
         /**
          * Returns the base address of the parallel port, if this has any meaning, or zero.
          *
          * @return the base address
          */
-        unsigned long getBaseAddress() const
-        throw ();
+        unsigned long getBaseAddress() const noexcept;
 
         /**
          * Returns the ECR address of the port, if that has any meaning, or zero.
          *
          * @return the address
          */
-        unsigned long getHighBaseAddress() const
-        throw ();
+        unsigned long getHighBaseAddress() const noexcept;
 
         /**
          * The filename associated with this port, if that has any meaning, or QString::null.
          *
          * @return the filename, e.g. /dev/parport0 on Linux.
          */
-        QString getFileName() const
-        throw ();
+        QString getFileName() const noexcept;
 
      protected:
 
@@ -213,14 +199,12 @@ class Parport
         /**
          * Implementation of Parport::waitData() that uses ieee1284_wait_data()
          */
-        bool waitDataIeee1284(int mask, int val, struct timeval* timeout)
-        throw (ParportError);
+        bool waitDataIeee1284(int mask, int val, struct timeval* timeout);
 
         /**
          * Implementation of Parport::waitData() that uses internal polling
          */
-        bool waitDataPoll(int mask, int val, struct timeval* timeout)
-        throw (ParportError);
+        bool waitDataPoll(int mask, int val, struct timeval* timeout);
 
     private:
         struct parport* m_parport;

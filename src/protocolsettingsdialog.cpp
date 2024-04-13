@@ -27,7 +27,7 @@
 
 // -------------------------------------------------------------------------------------------------
 ProtocolSettingsDialog::ProtocolSettingsDialog(QWidget *parent)
-    throw ()
+    noexcept
     : QDialog(parent)
 {
     setWindowTitle(tr("TFLA-01"));
@@ -38,7 +38,7 @@ ProtocolSettingsDialog::ProtocolSettingsDialog(QWidget *parent)
 
 // -------------------------------------------------------------------------------------------------
 void ProtocolSettingsDialog::setupUI()
-    throw ()
+    noexcept
 {
     QHBoxLayout *verticalBox = new QHBoxLayout();
 
@@ -74,7 +74,7 @@ void ProtocolSettingsDialog::setupUI()
 
 // -------------------------------------------------------------------------------------------------
 void ProtocolSettingsDialog::saveSettings()
-    throw ()
+    noexcept
 {
     Settings &set = Settings::set();
 
@@ -112,7 +112,7 @@ void ProtocolSettingsDialog::saveSettings()
 
 // -------------------------------------------------------------------------------------------------
 void ProtocolSettingsDialog::loadProtocolChannels()
-    throw ()
+    noexcept
 {
     m_protocolChannels << tr("(not assigned)");
     m_protocolChannels << AnalyzerManager::instance().getDisplayStringList();
@@ -120,7 +120,7 @@ void ProtocolSettingsDialog::loadProtocolChannels()
 
 // -------------------------------------------------------------------------------------------------
 void ProtocolSettingsDialog::loadSettings()
-    throw ()
+    noexcept
 {
     Settings &set = Settings::set();
     AnalyzerManager &analyzerManager = AnalyzerManager::instance();
@@ -137,7 +137,7 @@ void ProtocolSettingsDialog::loadSettings()
 
 // -------------------------------------------------------------------------------------------------
 QString ProtocolSettingsDialog::getProtocolChannelText(const QString &protocol, const QString &channel) const
-    throw ()
+    noexcept
 {
     return QString("%1 - %2").arg(protocol).arg(channel);
 }

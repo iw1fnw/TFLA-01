@@ -43,32 +43,32 @@ class ParportError : public TfError
          * Creates a new exception using error codes from libieee1284.
          */
         ParportError(int errorcode)
-        throw ();
+        noexcept;
 
         /**
          * Returns the error message.
          */
         virtual QString what() const
-        throw ();
+        noexcept;
 
         /**
          * Returns the error code.
          */
         int getErrorCode() const
-        throw ();
+        noexcept;
 
         /**
          * When getErrorCode() returns E1284_SYS, this variable contains the errno
          * variable when the exception has been created.
          */
         int getSystemErrorCode() const
-        throw ();
+        noexcept;
 
         /**
          * Returns the string representation of getSystemErrorCode().
          */
         QString getSystemErrorString() const
-        throw ();
+        noexcept;
 
     private:
         int m_errorcode;

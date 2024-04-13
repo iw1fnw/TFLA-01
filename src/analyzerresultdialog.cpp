@@ -26,7 +26,7 @@
 
 // -------------------------------------------------------------------------------------------------
 AnalyzerResultDialog::AnalyzerResultDialog(const QString &protocol, QWidget *parent)
-    throw ()
+    noexcept
     : QDialog(parent)
 {
     setWindowTitle(tr("%1 analyze result").arg(protocol));
@@ -35,14 +35,14 @@ AnalyzerResultDialog::AnalyzerResultDialog(const QString &protocol, QWidget *par
 
 // -------------------------------------------------------------------------------------------------
 void AnalyzerResultDialog::setResult(const QString &text)
-    throw ()
+    noexcept
 {
     m_resultText->setPlainText(text);
 }
 
 // -------------------------------------------------------------------------------------------------
 void AnalyzerResultDialog::setupUI()
-    throw ()
+    noexcept
 {
     QVBoxLayout *verticalLayout = new QVBoxLayout(this);
 
@@ -75,7 +75,7 @@ void AnalyzerResultDialog::setupUI()
 
 // -------------------------------------------------------------------------------------------------
 void AnalyzerResultDialog::resizeEvent(QResizeEvent *evt)
-    throw ()
+    noexcept
 {
     QDialog::resizeEvent(evt);
     Settings::set().writeEntry("AnalyzerResultDialog/width", width());
@@ -84,7 +84,7 @@ void AnalyzerResultDialog::resizeEvent(QResizeEvent *evt)
 
 // -------------------------------------------------------------------------------------------------
 void AnalyzerResultDialog::save()
-    throw ()
+    noexcept
 {
     QString filename = QFileDialog::getSaveFileName(this,
                                                     tr("Choose file name ..."),

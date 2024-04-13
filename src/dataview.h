@@ -36,35 +36,35 @@ class DataView : public QWidget
         static const quint32 DATFILE_CURRENT_VERSION;
 
     public:
-        DataView(QWidget* parent) throw ();
+        DataView(QWidget* parent) noexcept;
         virtual ~DataView() {}
 
-        void setData(const Data& data) throw ();
-        void redrawData() throw ();
-        void analyzeData(ProtocolAnalyzer *analyzer) throw ();
+        void setData(const Data& data) noexcept;
+        void redrawData() noexcept;
+        void analyzeData(ProtocolAnalyzer *analyzer) noexcept;
 
     public slots:
-        void zoomIn() throw ();
-        void zoomOut() throw ();
-        void zoomFit() throw ();
-        void zoom1() throw ();
-        void zoomMarkers() throw ();
+        void zoomIn() noexcept;
+        void zoomOut() noexcept;
+        void zoomFit() noexcept;
+        void zoom1() noexcept;
+        void zoomMarkers() noexcept;
 
-        void pos1() throw ();
-        void end() throw ();
-        void navigate(int direction) throw ();
-        void navigateLeft() throw ();
-        void navigateRight() throw ();
-        void navigateLeftPage() throw ();
-        void navigateRightPage() throw ();
-        void jumpToLeftMarker() throw ();
-        void jumpToRightMarker() throw ();
-        void saveScreenshot() throw ();
-        void exportToCSV() throw ();
-        void save() throw ();
-        void loadfile(const QString &fileName) throw ();
-        void open() throw ();
-        void reopen() throw ();
+        void pos1() noexcept;
+        void end() noexcept;
+        void navigate(int direction) noexcept;
+        void navigateLeft() noexcept;
+        void navigateRight() noexcept;
+        void navigateLeftPage() noexcept;
+        void navigateRightPage() noexcept;
+        void jumpToLeftMarker() noexcept;
+        void jumpToRightMarker() noexcept;
+        void saveScreenshot() noexcept;
+        void exportToCSV() noexcept;
+        void save() noexcept;
+        void loadfile(const QString &fileName) noexcept;
+        void open() noexcept;
+        void reopen() noexcept;
 
     signals:
         void leftMarkerValueChanged(double value);
@@ -75,8 +75,8 @@ class DataView : public QWidget
         void wheelEvent(QWheelEvent* e);
 
     protected slots:
-        void updateScrollInfo() throw ();
-        void scrollValueChanged(int value) throw ();
+        void updateScrollInfo() noexcept;
+        void scrollValueChanged(int value) noexcept;
 
     private:
         DataPlot*       m_dataPlot;

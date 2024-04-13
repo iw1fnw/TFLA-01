@@ -23,7 +23,7 @@ ParportList* ParportList::m_theInstance = 0;
 
 
 // -------------------------------------------------------------------------------------------------
-ParportList* ParportList::instance(int flags) throw (ParportError)
+ParportList* ParportList::instance(int flags)
 {
     if (!m_theInstance) {
         parport_list* list = new parport_list;
@@ -42,7 +42,7 @@ ParportList* ParportList::instance(int flags) throw (ParportError)
 
 
 // -------------------------------------------------------------------------------------------------
-ParportList::ParportList(struct parport_list* list) throw ()
+ParportList::ParportList(struct parport_list* list) noexcept
 {
     m_list = list;
 }
@@ -56,14 +56,14 @@ ParportList::~ParportList()
 
 
 // -------------------------------------------------------------------------------------------------
-int ParportList::getNumberOfPorts() const throw ()
+int ParportList::getNumberOfPorts() const noexcept
 {
     return m_list->portc;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-Parport ParportList::getPort(int number) const throw ()
+Parport ParportList::getPort(int number) const noexcept
 {
     return Parport(m_list->portv[number]);
 }

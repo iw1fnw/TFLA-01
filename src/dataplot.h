@@ -35,39 +35,39 @@ class DataPlot : public QWidget
 
     public:
 
-        DataPlot(QWidget* parent, DataView* dataView) throw ();
+        DataPlot(QWidget* parent, DataView* dataView) noexcept;
         virtual ~DataPlot() {}
 
-        void setZoomFactor(double factor) throw ();
-        double getZoomFactor() const throw ();
-        int getNumberOfDisplayedSamples() const throw ();
+        void setZoomFactor(double factor) noexcept;
+        double getZoomFactor() const noexcept;
+        int getNumberOfDisplayedSamples() const noexcept;
         int getNumberOfPossiblyDisplayedSamples() const throw();
-        int getCurrentWidthForPlot() const throw ();
-        int getPointsPerSample(double zoom = 1.0) const throw ();
-        QPixmap getScreenshot() throw ();
+        int getCurrentWidthForPlot() const noexcept;
+        int getPointsPerSample(double zoom = 1.0) const noexcept;
+        QPixmap getScreenshot() noexcept;
 
         // start index ----------------------------------------------------------------------------
-        void setStartIndex(int startIndex) throw ();
-        int getStartIndex() const throw ();
+        void setStartIndex(int startIndex) noexcept;
+        int getStartIndex() const noexcept;
 
         // marker handling ------------------------------------------------------------------------
-        int getLeftMarker() const throw ();
-        void setLeftMarker(int markerPosition) throw ();
+        int getLeftMarker() const noexcept;
+        void setLeftMarker(int markerPosition) noexcept;
 
-        int getRightMarker() const throw ();
-        void setRightMarker(int markerPosition) throw ();
+        int getRightMarker() const noexcept;
+        void setRightMarker(int markerPosition) noexcept;
 
-        void clearMarkers() throw ();
+        void clearMarkers() noexcept;
 
     signals:
         void leftMarkerValueChanged(double value);
         void rightMarkerValueChanged(double value);
 
     protected:
-        void plot(QPainter* painter) throw ();
-        void drawMarkers(QPainter* painter) throw ();
-        void recalculateXPositions() throw ();
-        int getLeftBegin() const throw ();
+        void plot(QPainter* painter) noexcept;
+        void drawMarkers(QPainter* painter) noexcept;
+        void recalculateXPositions() noexcept;
+        int getLeftBegin() const noexcept;
 
         void paintEvent(QPaintEvent* evt);
         void mousePressEvent(QMouseEvent* evt);

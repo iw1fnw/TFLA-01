@@ -20,19 +20,19 @@
 #include "settings.h"
 
 // -------------------------------------------------------------------------------------------------
-QString ProtocolAnalyzer::getSettingsString(const QString &channelName) const throw ()
+QString ProtocolAnalyzer::getSettingsString(const QString &channelName) const noexcept
 {
     return QString("%1/%2").arg( getId() ).arg( Settings::normalizePart(channelName) );
 }
 
 // -------------------------------------------------------------------------------------------------
-QString ProtocolAnalyzer::getDisplayString(const QString &channelName) const throw ()
+QString ProtocolAnalyzer::getDisplayString(const QString &channelName) const noexcept
 {
     return QString("%1 - %2").arg( getName() ).arg( channelName );
 }
 
 // -------------------------------------------------------------------------------------------------
-bool ProtocolAnalyzer::readChannelSetting() throw ()
+bool ProtocolAnalyzer::readChannelSetting() noexcept
 {
     Settings &settings = Settings::set();
     QStringList channels = getChannels();
@@ -57,8 +57,7 @@ bool ProtocolAnalyzer::readChannelSetting() throw ()
 }
 
 // -------------------------------------------------------------------------------------------------
-int ProtocolAnalyzer::getChannel(const QString &name) const
-    throw ()
+int ProtocolAnalyzer::getChannel(const QString &name) const noexcept
 {
     return m_channelMap[name];
 }

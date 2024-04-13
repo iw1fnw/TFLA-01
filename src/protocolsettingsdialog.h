@@ -30,16 +30,16 @@ class ProtocolSettingsDialog : public QDialog
     Q_OBJECT
 
     public:
-        ProtocolSettingsDialog(QWidget *parent) throw ();
+        ProtocolSettingsDialog(QWidget *parent) noexcept;
 
     protected:
-        void setupUI() throw ();
-        void loadProtocolChannels() throw ();
-        void loadSettings() throw ();
-        QString getProtocolChannelText(const QString &protocol, const QString &channel) const throw ();
+        void setupUI() noexcept;
+        void loadProtocolChannels() noexcept;
+        void loadSettings() noexcept;
+        QString getProtocolChannelText(const QString &protocol, const QString &channel) const noexcept;
 
     protected slots:
-        void saveSettings() throw ();
+        void saveSettings() noexcept;
 
     private:
         QLabel              *m_channelLabels[NUMBER_OF_BITS_PER_BYTE];

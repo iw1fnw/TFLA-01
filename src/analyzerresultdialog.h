@@ -31,15 +31,15 @@ class AnalyzerResultDialog : public QDialog
     Q_OBJECT
 
     public:
-        AnalyzerResultDialog(const QString &protocol, QWidget *parent) throw ();
-        void setResult(const QString &text) throw ();
+        AnalyzerResultDialog(const QString &protocol, QWidget *parent) noexcept;
+        void setResult(const QString &text) noexcept;
 
     protected:
-        void setupUI() throw ();
-        void resizeEvent(QResizeEvent *evt) throw ();
+        void setupUI() noexcept;
+        void resizeEvent(QResizeEvent *evt) noexcept;
 
     protected slots:
-        void save() throw ();
+        void save() noexcept;
 
     private:
         QTextEdit   *m_resultText;

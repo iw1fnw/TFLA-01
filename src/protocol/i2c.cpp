@@ -45,29 +45,25 @@
 
 
 // -------------------------------------------------------------------------------------------------
-QString I2cAnalyzer::getName() const
-    throw ()
+QString I2cAnalyzer::getName() const noexcept
 {
     return QString::fromUtf8("I²C");
 }
 
 // -------------------------------------------------------------------------------------------------
-QString I2cAnalyzer::getId() const
-    throw ()
+QString I2cAnalyzer::getId() const noexcept
 {
     return "I2C";
 }
 
 // -------------------------------------------------------------------------------------------------
-QStringList I2cAnalyzer::getChannels() const
-    throw ()
+QStringList I2cAnalyzer::getChannels() const noexcept
 {
     return QStringList() << "SDA" << "SCL";
 }
 
 // -------------------------------------------------------------------------------------------------
 void I2cAnalyzer::analyze(const Data &data, int start, int end, QTextStream &output)
-    throw (TfError)
 {
     int val;
     ds_cont_reg = DS_CTRL_REG_NOT_SET;
@@ -120,7 +116,7 @@ void I2cAnalyzer::analyze(const Data &data, int start, int end, QTextStream &out
 }
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::setI2C_Masks() throw ()
+void I2cAnalyzer::setI2C_Masks() noexcept
 {
     m_SCL_Mask = 1 << getChannel("SCL");
     m_SDA_Mask = 1 << getChannel("SDA");
@@ -129,7 +125,7 @@ void I2cAnalyzer::setI2C_Masks() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::setSize(int end) throw ()
+void I2cAnalyzer::setSize(int end) noexcept
 {
     if (end == -1)
         m_size = m_currentData.bytes().size();
@@ -139,8 +135,7 @@ void I2cAnalyzer::setSize(int end) throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-int I2cAnalyzer::getStart()
-    throw ()
+int I2cAnalyzer::getStart() noexcept
 {
     while (m_currentPosition + 1 < m_size) {
         if (((m_currentData.bytes()[m_currentPosition] & m_I2C_Mask) == m_I2C_Mask) &&
@@ -155,8 +150,7 @@ int I2cAnalyzer::getStart()
 
 
 // -------------------------------------------------------------------------------------------------
-int I2cAnalyzer::Clock_Pulse()
-    throw ()
+int I2cAnalyzer::Clock_Pulse() noexcept
 {
     unsigned char SDA_i;
 
@@ -205,8 +199,7 @@ int I2cAnalyzer::Clock_Pulse()
 
 
 // -------------------------------------------------------------------------------------------------
-int I2cAnalyzer::getByte()
-    throw ()
+int I2cAnalyzer::getByte() noexcept
 {
     int bit_value = 0;
     int ret = 0;
@@ -229,16 +222,14 @@ int I2cAnalyzer::getByte()
 
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::writeCmd(QTextStream &output, QString text)
-    throw ()
+void I2cAnalyzer::writeCmd(QTextStream &output, QString text) noexcept
 {
      output << QString::number(m_currentData.getMsecsForSample(m_currentPosition)) << text;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::writeValue(QTextStream &output, int val)
-    throw ()
+void I2cAnalyzer::writeValue(QTextStream &output, int val) noexcept
 {
     // Time - Bin - Hex - Dec
     output << QString::number( m_currentData.getMsecsForSample(m_currentPosition));
@@ -249,8 +240,7 @@ void I2cAnalyzer::writeValue(QTextStream &output, int val)
 
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::Decode_RTC(QTextStream &output,int val)
-    throw ()
+void I2cAnalyzer::Decode_RTC(QTextStream &output,int val) noexcept
 {
     output << QString::number( m_currentData.getMsecsForSample(m_currentPosition));
 
@@ -294,8 +284,7 @@ void I2cAnalyzer::Decode_RTC(QTextStream &output,int val)
 
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::writeError(int val, QTextStream &output)
-    throw ()
+void I2cAnalyzer::writeError(int val, QTextStream &output) noexcept
 {
     switch (val) {
         case I2C_START:
@@ -321,8 +310,7 @@ void I2cAnalyzer::writeError(int val, QTextStream &output)
 
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::writeACK(int val, QTextStream &output)
-    throw ()
+void I2cAnalyzer::writeACK(int val, QTextStream &output) noexcept
 {
     switch (val) {
         case 0:
@@ -343,8 +331,7 @@ void I2cAnalyzer::writeACK(int val, QTextStream &output)
 
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::processUnknowIC(int val, QTextStream &output)
-    throw ()
+void I2cAnalyzer::processUnknowIC(int val, QTextStream &output) noexcept
 {
     do {
         if (val > I2C_MAX_BYTE_VALUE) {
@@ -366,8 +353,7 @@ void I2cAnalyzer::processUnknowIC(int val, QTextStream &output)
 
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::processPCF8574(int val, QTextStream &output)
-    throw ()
+void I2cAnalyzer::processPCF8574(int val, QTextStream &output) noexcept
 {
     //writeAddrs
     if ((val & 0x01) == 0x01) {
@@ -396,8 +382,7 @@ void I2cAnalyzer::processPCF8574(int val, QTextStream &output)
 
 
 // -------------------------------------------------------------------------------------------------
-void I2cAnalyzer::processRTC(int val, QTextStream &output)
-    throw ()
+void I2cAnalyzer::processRTC(int val, QTextStream &output) noexcept
 {
     if ((val & 0x01) == 0x01) {
         writeCmd(output, " - Read from RTC at address "+QString::number((val >> 1)&0x3)+"\n");

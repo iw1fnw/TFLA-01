@@ -51,29 +51,25 @@
  */
 
 // -------------------------------------------------------------------------------------------------
-QString SpiAnalyzer::getName() const
-    throw ()
+QString SpiAnalyzer::getName() const noexcept
 {
     return "SPI";
 }
 
 // -------------------------------------------------------------------------------------------------
-QString SpiAnalyzer::getId() const
-    throw ()
+QString SpiAnalyzer::getId() const noexcept
 {
     return "SPI";
 }
 
 // -------------------------------------------------------------------------------------------------
-QStringList SpiAnalyzer::getChannels() const
-    throw ()
+QStringList SpiAnalyzer::getChannels() const noexcept
 {
     return QStringList() << "SDI/SDO" << "SCK";
 }
 
 // -------------------------------------------------------------------------------------------------
 void SpiAnalyzer::analyze(const Data &data, int start, int end, QTextStream &output)
-    throw (TfError)
 {
     // get current data pool
     m_currentData = data;
@@ -135,7 +131,7 @@ void SpiAnalyzer::analyze(const Data &data, int start, int end, QTextStream &out
 }
 
 // -------------------------------------------------------------------------------------------------
-void SpiAnalyzer::setSPIMasks() throw ()
+void SpiAnalyzer::setSPIMasks() noexcept
 {
     m_SCK_Mask = 1 << getChannel("SCK");
     qDebug() << "MASK -> sck_mask: " << int(m_SCK_Mask);
@@ -146,7 +142,7 @@ void SpiAnalyzer::setSPIMasks() throw ()
 }
 
 // -------------------------------------------------------------------------------------------------
-void SpiAnalyzer::setSPISize(int end) throw ()
+void SpiAnalyzer::setSPISize(int end) noexcept
 {
     if (end == -1)
         m_size = m_currentData.bytes().size();
@@ -156,7 +152,7 @@ void SpiAnalyzer::setSPISize(int end) throw ()
 }
 
 // -------------------------------------------------------------------------------------------------
-int SpiAnalyzer::getSPIStart() throw ()
+int SpiAnalyzer::getSPIStart() noexcept
 {
     qDebug() << "START -> Start";
 
@@ -168,7 +164,7 @@ int SpiAnalyzer::getSPIStart() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-int SpiAnalyzer::clkPulse() throw ()
+int SpiAnalyzer::clkPulse() noexcept
 {
     qDebug() << "PULSE -> Pulse";
 
@@ -192,7 +188,7 @@ int SpiAnalyzer::clkPulse() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-int SpiAnalyzer::getSDABit() throw()
+int SpiAnalyzer::getSDABit() noexcept
 {
     if (m_currentPosition >= m_size)
         return -1;
@@ -205,7 +201,7 @@ int SpiAnalyzer::getSDABit() throw()
 
 
 // -------------------------------------------------------------------------------------------------
-QString SpiAnalyzer::binRepByte(unsigned char val) throw()
+QString SpiAnalyzer::binRepByte(unsigned char val) noexcept
 {
     std::stringstream ss;
 

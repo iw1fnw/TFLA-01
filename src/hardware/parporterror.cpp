@@ -25,7 +25,7 @@
 
 // -------------------------------------------------------------------------------------------------
 ParportError::ParportError(int errorcode)
-    throw ()
+    noexcept
   : m_errorcode(errorcode)
   , m_systemError(-1)
 {
@@ -35,7 +35,7 @@ ParportError::ParportError(int errorcode)
 
 // -------------------------------------------------------------------------------------------------
 QString ParportError::what() const
-    throw ()
+    noexcept
 {
     switch (m_errorcode) {
         case E1284_OK:
@@ -65,21 +65,21 @@ QString ParportError::what() const
 
 // -------------------------------------------------------------------------------------------------
 int ParportError::getErrorCode() const
-    throw ()
+    noexcept
 {
     return m_errorcode;
 }
 
 // -------------------------------------------------------------------------------------------------
 int ParportError::getSystemErrorCode() const
-    throw ()
+    noexcept
 {
     return m_systemError;
 }
 
 // -------------------------------------------------------------------------------------------------
 QString ParportError::getSystemErrorString() const
-    throw ()
+    noexcept
 {
     if (m_systemError != -1)
         return std::strerror(m_systemError);

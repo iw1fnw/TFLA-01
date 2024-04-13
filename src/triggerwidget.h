@@ -28,13 +28,13 @@ class TriggerWidget : public QWidget
      Q_OBJECT
 
      public:
-        TriggerWidget(QWidget* parent) throw ();
-        byte getMask() const throw ();
-        byte getValue() const throw ();
-        void setValue(byte mask, byte value) throw ();
+        TriggerWidget(QWidget* parent) noexcept;
+        byte getMask() const noexcept;
+        byte getValue() const noexcept;
+        void setValue(byte mask, byte value) noexcept;
 
     protected slots:
-        void valueChangedHandler() throw ();
+        void valueChangedHandler() noexcept;
 
     signals:
         void valueChanged(byte mask, byte value);

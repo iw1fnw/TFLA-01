@@ -34,7 +34,7 @@
 #define MEASURE_TIME              0
 
 // -------------------------------------------------------------------------------------------------
-DataPlot::DataPlot(QWidget* parent, DataView* dataView) throw ()
+DataPlot::DataPlot(QWidget* parent, DataView* dataView) noexcept
     : QWidget(parent)
     , m_dataView(dataView)
     , m_startIndex(0)
@@ -92,7 +92,7 @@ void DataPlot::paintEvent(QPaintEvent*)
 
 
 // -------------------------------------------------------------------------------------------------
-void DataPlot::setZoomFactor(double factor) throw ()
+void DataPlot::setZoomFactor(double factor) noexcept
 {
     m_zoomFactor = factor;
     recalculateXPositions();
@@ -101,14 +101,14 @@ void DataPlot::setZoomFactor(double factor) throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-double DataPlot::getZoomFactor() const throw ()
+double DataPlot::getZoomFactor() const noexcept
 {
     return m_zoomFactor;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataPlot::setStartIndex(int startIndex) throw ()
+void DataPlot::setStartIndex(int startIndex) noexcept
 {
     if (startIndex < 0)
         m_startIndex = 0;
@@ -120,21 +120,21 @@ void DataPlot::setStartIndex(int startIndex) throw ()
 
 // -------------------------------------------------------------------------------------------------
 int DataPlot::getStartIndex() const
-    throw ()
+    noexcept
 {
     return m_startIndex;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-int DataPlot::getLeftMarker() const throw ()
+int DataPlot::getLeftMarker() const noexcept
 {
     return m_leftMarker;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataPlot::setLeftMarker(int markerpos)  throw ()
+void DataPlot::setLeftMarker(int markerpos)  noexcept
 {
     double ms = m_dataView->m_currentData.getMsecsForSample(markerpos);
 
@@ -149,14 +149,14 @@ void DataPlot::setLeftMarker(int markerpos)  throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-int DataPlot::getRightMarker() const throw ()
+int DataPlot::getRightMarker() const noexcept
 {
     return m_rightMarker;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataPlot::setRightMarker(int markerpos) throw ()
+void DataPlot::setRightMarker(int markerpos) noexcept
 {
     double ms = m_dataView->m_currentData.getMsecsForSample(markerpos);
 
@@ -171,7 +171,7 @@ void DataPlot::setRightMarker(int markerpos) throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void DataPlot::clearMarkers() throw ()
+void DataPlot::clearMarkers() noexcept
 {
     setLeftMarker(-1);
     setRightMarker(-1);
@@ -180,7 +180,7 @@ void DataPlot::clearMarkers() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-int DataPlot::getNumberOfDisplayedSamples () const throw ()
+int DataPlot::getNumberOfDisplayedSamples () const noexcept
 {
     int dataToDisplayMax = m_dataView->m_currentData.bytes().size() - m_startIndex;
 
@@ -203,21 +203,21 @@ int DataPlot::getNumberOfPossiblyDisplayedSamples() const throw()
 
 
 // -------------------------------------------------------------------------------------------------
-int DataPlot::getCurrentWidthForPlot() const throw ()
+int DataPlot::getCurrentWidthForPlot() const noexcept
 {
     return width() - int(2.0 / 3.0 * (height() / NUMBER_OF_BITS_PER_BYTE));
 }
 
 
 // -------------------------------------------------------------------------------------------------
-int DataPlot::getPointsPerSample(double zoom ) const throw ()
+int DataPlot::getPointsPerSample(double zoom ) const noexcept
 {
     return int(DEFAULT_POINTS_PER_SAMPLE * zoom);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-QPixmap DataPlot::getScreenshot() throw ()
+QPixmap DataPlot::getScreenshot() noexcept
 {
     QPixmap ret = m_lastPixmap;
     QPainter p(&ret);
@@ -229,7 +229,7 @@ QPixmap DataPlot::getScreenshot() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void DataPlot::recalculateXPositions() throw ()
+void DataPlot::recalculateXPositions() noexcept
 {
     m_xPositions.clear();
     int leftBegin = getLeftBegin();
@@ -254,7 +254,7 @@ void DataPlot::recalculateXPositions() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-int DataPlot::getLeftBegin() const throw ()
+int DataPlot::getLeftBegin() const noexcept
 {
     return int(2.0 / 3.0 * height() / NUMBER_OF_BITS_PER_BYTE);
 }
@@ -262,7 +262,7 @@ int DataPlot::getLeftBegin() const throw ()
 
 // -------------------------------------------------------------------------------------------------
 void DataPlot::plot(QPainter* painter)
-    throw ()
+    noexcept
 {
     int heightPerField = height() / NUMBER_OF_BITS_PER_BYTE;
     ByteVector data = m_dataView->m_currentData.bytes();
@@ -364,7 +364,7 @@ void DataPlot::plot(QPainter* painter)
 
 
 // -------------------------------------------------------------------------------------------------
-void DataPlot::drawMarkers(QPainter* painter) throw ()
+void DataPlot::drawMarkers(QPainter* painter) noexcept
 {
     QPen leftMarkerPen = QPen(QColor(Settings::set().readEntry("UI/Left_Marker_Color")), 2,
 			Qt::SolidLine);

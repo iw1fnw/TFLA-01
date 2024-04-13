@@ -42,7 +42,7 @@ const quint32 DataView::DATFILE_CURRENT_VERSION = 0;
 
 // -------------------------------------------------------------------------------------------------
 DataView::DataView(QWidget* parent)
-    throw ()
+    noexcept
     : QWidget(parent)
     , m_scrollDivisor(1)
 {
@@ -70,7 +70,7 @@ DataView::DataView(QWidget* parent)
 
 // -------------------------------------------------------------------------------------------------
 void DataView::setData(const Data& data)
-    throw ()
+    noexcept
 {
     // QScrollBar has a bug with very large values and large display width so that the
     // slider becomes too small (should be 90 %, is 5 %)
@@ -93,7 +93,7 @@ void DataView::setData(const Data& data)
 
 // -------------------------------------------------------------------------------------------------
 void DataView::zoomIn()
-    throw ()
+    noexcept
 {
     if (m_dataPlot->getNumberOfDisplayedSamples() > 5)
         m_dataPlot->setZoomFactor(m_dataPlot->getZoomFactor() * 2.0);
@@ -102,7 +102,7 @@ void DataView::zoomIn()
 
 // -------------------------------------------------------------------------------------------------
 void DataView::zoomOut()
-    throw ()
+    noexcept
 {
     m_dataPlot->setZoomFactor(m_dataPlot->getZoomFactor() / 2.0);
 }
@@ -110,7 +110,7 @@ void DataView::zoomOut()
 
 // -------------------------------------------------------------------------------------------------
 void DataView::zoomFit()
-    throw ()
+    noexcept
 {
     if (m_currentData.bytes().size() != 0) {
         m_dataPlot->setStartIndex(0);
@@ -123,14 +123,14 @@ void DataView::zoomFit()
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::zoom1() throw ()
+void DataView::zoom1() noexcept
 {
     m_dataPlot->setZoomFactor(1.0);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::zoomMarkers() throw ()
+void DataView::zoomMarkers() noexcept
 {
     if (m_dataPlot->getLeftMarker() > 0 && m_dataPlot->getRightMarker() > 0) {
         double diff = DABS(m_dataPlot->getRightMarker() - m_dataPlot->getLeftMarker());
@@ -144,14 +144,14 @@ void DataView::zoomMarkers() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::pos1() throw ()
+void DataView::pos1() noexcept
 {
     m_dataPlot->setStartIndex(0);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::end() throw ()
+void DataView::end() noexcept
 {
     if (m_currentData.bytes().size() > 0)
         m_dataPlot->setStartIndex(m_currentData.bytes().size() -
@@ -195,7 +195,7 @@ void DataView::wheelEvent(QWheelEvent* e)
 
 // -------------------------------------------------------------------------------------------------
 void DataView::updateScrollInfo()
-    throw ()
+    noexcept
 {
     int ps = m_dataPlot->getNumberOfDisplayedSamples();
 
@@ -219,7 +219,7 @@ void DataView::updateScrollInfo()
 
 // -------------------------------------------------------------------------------------------------
 void DataView::redrawData()
-    throw ()
+    noexcept
 {
     m_dataPlot->update();
 }
@@ -227,7 +227,7 @@ void DataView::redrawData()
 
 // -------------------------------------------------------------------------------------------------
 void DataView::analyzeData(ProtocolAnalyzer *analyzer)
-    throw ()
+    noexcept
 {
     if (m_currentData.bytes().size() == 0) {
         Tfla01::instance()->statusBar()->showMessage(tr("No data available. Aquire some data first or load a file."), 4000);
@@ -256,7 +256,7 @@ void DataView::analyzeData(ProtocolAnalyzer *analyzer)
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::scrollValueChanged(int value) throw ()
+void DataView::scrollValueChanged(int value) noexcept
 {
     if (value == m_scrollBar->maximum())
         end();
@@ -266,7 +266,7 @@ void DataView::scrollValueChanged(int value) throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::navigate(int direction) throw ()
+void DataView::navigate(int direction) noexcept
 {
     int si;
 
@@ -302,35 +302,35 @@ void DataView::navigate(int direction) throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::navigateLeft() throw ()
+void DataView::navigateLeft() noexcept
 {
     navigate(QAbstractSlider::SliderSingleStepSub);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::navigateRight() throw ()
+void DataView::navigateRight() noexcept
 {
     navigate(QAbstractSlider::SliderSingleStepAdd);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::navigateLeftPage() throw ()
+void DataView::navigateLeftPage() noexcept
 {
     navigate(QAbstractSlider::SliderPageStepSub);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::navigateRightPage() throw ()
+void DataView::navigateRightPage() noexcept
 {
     navigate(QAbstractSlider::SliderPageStepAdd);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::jumpToLeftMarker() throw ()
+void DataView::jumpToLeftMarker() noexcept
 {
     if (m_dataPlot->getLeftMarker() >= 0)
         m_dataPlot->setStartIndex(qMax(0, m_dataPlot->getLeftMarker()));
@@ -338,7 +338,7 @@ void DataView::jumpToLeftMarker() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::jumpToRightMarker() throw ()
+void DataView::jumpToRightMarker() noexcept
 {
     if (m_dataPlot->getRightMarker() >= 0) {
         // 3 instead of 2 because in end() size() is lastElementIndex + 1
@@ -349,7 +349,7 @@ void DataView::jumpToRightMarker() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void DataView::saveScreenshot() throw ()
+void DataView::saveScreenshot() noexcept
 {
     std::unique_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file to save")));
     filedialog->setNameFilter(tr("PNG files (*.png)"));
@@ -372,7 +372,7 @@ void DataView::saveScreenshot() throw ()
 
 // -------------------------------------------------------------------------------------------------
 void DataView::exportToCSV()
-    throw ()
+    noexcept
 {
     std::unique_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file name for exported data")));
     filedialog->setNameFilter(tr("CSV files (*.csv)"));
@@ -432,7 +432,7 @@ void DataView::exportToCSV()
 
 // -------------------------------------------------------------------------------------------------
 void DataView::save()
-    throw ()
+    noexcept
 {
     std::unique_ptr<QFileDialog> filedialog(new QFileDialog(this, tr("Choose file to save")));
     filedialog->setNameFilter(tr("DAT files (*.dat)"));
@@ -481,7 +481,7 @@ void DataView::save()
 
 // -------------------------------------------------------------------------------------------------
 void DataView::loadfile(const QString &fileName)
-    throw ()
+    noexcept
 {
 
     QFile file(fileName);
@@ -542,7 +542,7 @@ void DataView::loadfile(const QString &fileName)
 
 // -------------------------------------------------------------------------------------------------
 void DataView::open()
-    throw ()
+    noexcept
 {
     QString fileName;
     fileName = QFileDialog::getOpenFileName(this, tr("Choose file to open"), QDir::currentPath(),
@@ -556,7 +556,7 @@ void DataView::open()
 
 // -------------------------------------------------------------------------------------------------
 void DataView::reopen()
-    throw ()
+    noexcept
 {
     QString fileName;
     fileName = Settings::set().readEntry("Main Window/LastFile");

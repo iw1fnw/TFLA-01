@@ -23,23 +23,22 @@
 class SpiAnalyzer : public ProtocolAnalyzer
 {
     public:
-        QString getId() const throw ();
-        QString getName() const throw ();
-        QStringList getChannels() const throw ();
+        QString getId() const noexcept;
+        QString getName() const noexcept;
+        QStringList getChannels() const noexcept;
 
-        void analyze(const Data &data, int start, int end, QTextStream &output)
-        throw (TfError);
+        void analyze(const Data &data, int start, int end, QTextStream &output);
 
     protected:
-        int getCLKFreq() throw();
-        void setSPIMasks() throw ();
-        void setSPISize(int end) throw ();
-        int getSDABit() throw();
-        int getSPIStart() throw ();
-        int clkPulse() throw ();
+        int getCLKFreq() noexcept;
+        void setSPIMasks() noexcept;
+        void setSPISize(int end) noexcept;
+        int getSDABit() noexcept;
+        int getSPIStart() noexcept;
+        int clkPulse() noexcept;
 
     private:
-        QString binRepByte(unsigned char val) throw();
+        QString binRepByte(unsigned char val) noexcept;
 
     private:
         unsigned char m_SCK_Mask;

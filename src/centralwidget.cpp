@@ -24,7 +24,7 @@
 
 // -------------------------------------------------------------------------------------------------
 CentralWidget::CentralWidget(QWidget* parent)
-    throw ()
+    noexcept
     : QFrame(parent)
 {
     QVBoxLayout* layout = new QVBoxLayout;
@@ -52,7 +52,7 @@ CentralWidget::CentralWidget(QWidget* parent)
 
 // -------------------------------------------------------------------------------------------------
 DataView* CentralWidget::getDataView() const
-    throw ()
+    noexcept
 {
     return m_dataView;
 }

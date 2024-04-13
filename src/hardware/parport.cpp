@@ -51,7 +51,7 @@ Parport::~Parport()
 
 
 // -------------------------------------------------------------------------------------------------
-void Parport::open(int flags, int* capabilities) throw (ParportError)
+void Parport::open(int flags, int* capabilities)
 {
     int ret;
 
@@ -67,7 +67,7 @@ void Parport::open(int flags, int* capabilities) throw (ParportError)
 
 
 // -------------------------------------------------------------------------------------------------
-void Parport::close() throw (ParportError)
+void Parport::close()
 {
     if (!m_isOpen)
         return;
@@ -82,7 +82,7 @@ void Parport::close() throw (ParportError)
 
 
 // -------------------------------------------------------------------------------------------------
-void Parport::release() throw ()
+void Parport::release() noexcept
 {
     ieee1284_release(m_parport);
 
@@ -91,7 +91,7 @@ void Parport::release() throw ()
 
 
 // -------------------------------------------------------------------------------------------------
-void Parport::claim() throw (ParportError)
+void Parport::claim()
 {
     int err;
 
@@ -104,7 +104,7 @@ void Parport::claim() throw (ParportError)
 
 // -------------------------------------------------------------------------------------------------
 #ifdef __linux__
-bool Parport::checkTristate() throw ()
+bool Parport::checkTristate() noexcept
 {
     int modes;
 
@@ -134,14 +134,14 @@ bool Parport::checkTristate() throw ()
     return true;
 }
 #else /* !__linux__ */
-bool Parport::checkTristate() throw ()
+bool Parport::checkTristate() noexcept
 {
     return true;
 }
 #endif /* __linux__ */
 
 // -------------------------------------------------------------------------------------------------
-byte Parport::readData() throw (ParportError)
+byte Parport::readData()
 {
     int ret;
 
@@ -153,21 +153,21 @@ byte Parport::readData() throw (ParportError)
 
 
 // -------------------------------------------------------------------------------------------------
-void Parport::writeData(byte data) throw ()
+void Parport::writeData(byte data) noexcept
 {
     ieee1284_write_data(m_parport, data);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void Parport::writeControl(byte data) throw ()
+void Parport::writeControl(byte data) noexcept
 {
     ieee1284_write_control(m_parport, data);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-void Parport::setDataDirection(bool reverse) throw (ParportError)
+void Parport::setDataDirection(bool reverse)
 {
     int ret;
 
@@ -178,7 +178,6 @@ void Parport::setDataDirection(bool reverse) throw (ParportError)
 
 // -------------------------------------------------------------------------------------------------
 bool Parport::waitData(int mask, int val, struct timeval* timeout, bool poll)
-    throw (ParportError)
 {
     if (poll)
         return waitDataPoll(mask, val, timeout);
@@ -188,7 +187,6 @@ bool Parport::waitData(int mask, int val, struct timeval* timeout, bool poll)
 
 // -------------------------------------------------------------------------------------------------
 bool Parport::waitDataPoll(int mask, int val, struct timeval* timeout)
-    throw (ParportError)
 {
 #ifndef __linux__
     // don't know about timing operations on Windows, but don't also want to
@@ -233,7 +231,6 @@ bool Parport::waitDataPoll(int mask, int val, struct timeval* timeout)
 
 // -------------------------------------------------------------------------------------------------
 bool Parport::waitDataIeee1284(int mask, int val, struct timeval* timeout)
-    throw (ParportError)
 {
     int ret;
     struct timeval default_timeout = { 60, 0 };
@@ -254,28 +251,28 @@ bool Parport::waitDataIeee1284(int mask, int val, struct timeval* timeout)
 
 
 // -------------------------------------------------------------------------------------------------
-QString Parport::getName() const throw ()
+QString Parport::getName() const noexcept
 {
     return QString::fromLocal8Bit(m_parport->name);
 }
 
 
 // -------------------------------------------------------------------------------------------------
-unsigned long Parport::getBaseAddress() const throw ()
+unsigned long Parport::getBaseAddress() const noexcept
 {
     return m_parport->base_addr;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-unsigned long Parport::getHighBaseAddress() const throw ()
+unsigned long Parport::getHighBaseAddress() const noexcept
 {
     return m_parport->hibase_addr;
 }
 
 
 // -------------------------------------------------------------------------------------------------
-QString Parport::getFileName() const throw ()
+QString Parport::getFileName() const noexcept
 {
     return QString::fromLocal8Bit(m_parport->filename);
 }

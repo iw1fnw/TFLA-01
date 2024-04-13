@@ -22,21 +22,21 @@
 class Settings
 {
     public:
-        Settings() throw ();
+        Settings() noexcept;
         virtual ~Settings() { }
 
-        void writeEntry(const QString & key, const QString & value) throw ();
-        void writeEntry(const QString & key, int value) throw ();
-        void writeEntry(const QString & key, bool value) throw ();
-        void writeEntry(const QString & key, double value) throw ();
+        void writeEntry(const QString & key, const QString & value) noexcept;
+        void writeEntry(const QString & key, int value) noexcept;
+        void writeEntry(const QString & key, bool value) noexcept;
+        void writeEntry(const QString & key, double value) noexcept;
 
-        QString readEntry(const QString & key) throw ();
-        int readNumEntry (const QString & key, int def=0) throw ();
-        double readDoubleEntry(const QString & key) throw ();
-        bool readBoolEntry(const QString & key) throw ();
+        QString readEntry(const QString & key) noexcept;
+        int readNumEntry (const QString & key, int def=0) noexcept;
+        double readDoubleEntry(const QString & key) noexcept;
+        bool readBoolEntry(const QString & key) noexcept;
 
      public:
-        static Settings& set() throw ();
+        static Settings& set() noexcept;
 
         static QString normalizePart(const QString &string);
 

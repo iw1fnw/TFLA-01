@@ -25,14 +25,14 @@ class UpdateChecker : public QObject
     Q_OBJECT
 
     public:
-        UpdateChecker(QWidget *parent) throw ();
+        UpdateChecker(QWidget *parent) noexcept;
 
     public slots:
-        void checkForUpdate() throw ();
-        void replyFinished(QNetworkReply *reply) throw ();
+        void checkForUpdate() noexcept;
+        void replyFinished(QNetworkReply *reply) noexcept;
 
     public:
-        static int versionCompare(const QString &a, const QString &b) throw ();
+        static int versionCompare(const QString &a, const QString &b) noexcept;
 };
 
 #endif /* UPDATECHECKER_H */

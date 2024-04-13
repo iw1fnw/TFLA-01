@@ -30,14 +30,14 @@ class AnalyzerManager {
         virtual ~AnalyzerManager();
 
     public:
-        void registerAnalyzer(ProtocolAnalyzer *analyzer) throw ();
-        QList<ProtocolAnalyzer *> getAnalyzers() const throw ();
-        QStringList getAnalyzerNames() const throw ();
-        QStringList getAnalyzerIds() const throw ();
-        ProtocolAnalyzer *getAnalyzerById(const QString &id) const throw ();
+        void registerAnalyzer(ProtocolAnalyzer *analyzer) noexcept;
+        QList<ProtocolAnalyzer *> getAnalyzers() const noexcept;
+        QStringList getAnalyzerNames() const noexcept;
+        QStringList getAnalyzerIds() const noexcept;
+        ProtocolAnalyzer *getAnalyzerById(const QString &id) const noexcept;
 
-        QStringList getSettingsStringList() const throw ();
-        QStringList getDisplayStringList() const throw ();
+        QStringList getSettingsStringList() const noexcept;
+        QStringList getDisplayStringList() const noexcept;
 
     private:
         QMap<QString, ProtocolAnalyzer *> m_analyzers;

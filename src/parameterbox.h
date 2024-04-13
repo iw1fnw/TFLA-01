@@ -27,18 +27,18 @@ class ParameterBox : public QFrame
     Q_OBJECT
 
     public:
-        ParameterBox(QWidget* parent) throw ();
+        ParameterBox(QWidget* parent) noexcept;
         virtual ~ParameterBox() {}
 
     public slots:
-        void setLeftMarker(double value) throw ();
-        void setRightMarker(double value) throw ();
+        void setLeftMarker(double value) noexcept;
+        void setRightMarker(double value) noexcept;
 
     protected slots:
-        void timeValueChanged(const QTime& time) throw ();
-        void triggerValueChanged(byte mask, byte value) throw ();
-        void sliderValueChanged(int newValue) throw ();
-        void updateValues() throw ();
+        void timeValueChanged(const QTime& time) noexcept;
+        void triggerValueChanged(byte mask, byte value) noexcept;
+        void sliderValueChanged(int newValue) noexcept;
+        void updateValues() noexcept;
 
     private:
         QLabel* m_leftMarker;

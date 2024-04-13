@@ -32,18 +32,17 @@ class ProtocolAnalyzer
         virtual ~ProtocolAnalyzer() {}
 
     public:
-        virtual QString getId() const throw () = 0;
-        virtual QString getName() const throw () = 0;
-        virtual QStringList getChannels() const throw () = 0;
+        virtual QString getId() const noexcept = 0;
+        virtual QString getName() const noexcept = 0;
+        virtual QStringList getChannels() const noexcept = 0;
 
-        QString getSettingsString(const QString &channelName) const throw ();
-        QString getDisplayString(const QString &channelName) const throw ();
+        QString getSettingsString(const QString &channelName) const noexcept;
+        QString getDisplayString(const QString &channelName) const noexcept;
 
-        bool readChannelSetting() throw ();
-        int getChannel(const QString &name) const throw ();
+        bool readChannelSetting() noexcept;
+        int getChannel(const QString &name) const noexcept;
 
-        virtual void analyze(const Data &data, int start, int end, QTextStream &output)
-        throw (TfError) = 0;
+        virtual void analyze(const Data &data, int start, int end, QTextStream &output) = 0;
 
     private:
         QMap<QString, int> m_channelMap;
