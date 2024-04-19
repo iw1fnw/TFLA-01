@@ -1,14 +1,10 @@
 TODO
 ====
 
- * Check all compile warnings, and remove deprecated functions (in particular find a solution for the throw() deprecation)
- * Check make-install directories
- * Remove (or correct) check for updates at start-up, giving error
  * Clean-up documentation to reflect new version
- * Testing all functionalities for bugs due to porting
 
 --- outstanding from version 0.5.0 --- 
- 
+
  * Support for "I2C bus monitor board"
    http://www.i2cchip.com/pdfs/busmon_sch.pdf
 
@@ -16,5 +12,5 @@ TODO
    _SCL is pin 12 paper empty
    _IRQ is pin 11 busy
    unused is pin 10
-   
+
    The data pins D7,6,5 must be set high to power the isolator circuit.

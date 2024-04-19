@@ -313,7 +313,8 @@
                   <entry>
                     <literal>cmake</literal>
                     <literal>g++</literal>
-                    <literal>libqt4-dev</literal>
+                    <literal>qtbase5-dev</literal>
+                    <literal>qttools5-dev</literal>
                     <literal>libieee1284-3-dev</literal>
                     <literal>xsltproc</literal>
                     <literal>docbook-xml</literal>
